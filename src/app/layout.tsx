@@ -21,8 +21,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "HEEDY",
-  description: "Premium skincare and cosmetics for your daily routine.",
+  title: "CHOOSEME | Handcrafted Soaps",
+  description: "Handcrafted premium soaps for your daily bathing ritual.",
 };
 
 import { CartProvider } from "../context/CartContext";

@@ -47,7 +47,7 @@ const contacts = [
   {
     icon: MapPin,
     label: "VISIT US",
-    value: "Heedy Sajin Land, Kadakkavoor\nThiruvanathapuram, Kerala",
+    value: "Chooseme Sajin Land, Kadakkavoor\nThiruvanathapuram, Kerala",
     href: "https://maps.google.com",
   },
   {
@@ -59,8 +59,8 @@ const contacts = [
   {
     icon: Mail,
     label: "EMAIL DIRECTLY",
-    value: "infoheedy@gmail.com",
-    href: "mailto:infoheedy@gmail.com",
+    value: "choosemenatural@gmail.com",
+    href: "mailto:choosemenatural@gmail.com",
   },
 ];
 
@@ -74,10 +74,10 @@ const socials = [
 function ColumnTitle({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-6">
-      <h3 className="font-sans font-bold text-sm tracking-[0.15em] uppercase text-slate-900">
+      <h3 className="font-sans font-bold text-sm tracking-[0.15em] uppercase text-ink-900">
         {children}
       </h3>
-      <div className="w-8 h-1 bg-blue-500 rounded-full mt-2" />
+      <div className="w-8 h-1 bg-brand-500 rounded-full mt-2" />
     </div>
   );
 }
@@ -86,26 +86,26 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-slate-50 w-full border-t border-slate-200">
+    <footer className="bg-ink-50 w-full border-t border-ink-200">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 pt-8 md:pt-12 pb-8">
         {/* Footer Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-12 lg:gap-16">
 
           {/* Column 1 — Brand */}
           <div className="lg:col-span-4">
-            <Link href="/" className="inline-flex items-center mb-6" aria-label="HEEDY brand logo">
-              <div className="relative w-52 h-14">
+            <Link href="/" className="inline-flex items-center mb-6" aria-label="CHOOSEME brand logo">
+              <div className="relative w-52 h-28">
                 <Image
-                  src="/logo.jpg"
-                  alt="HEEDY Logo"
+                  src="/logo-transparent.png"
+                  alt="CHOOSEME Logo"
                   fill
                   sizes="(max-width: 640px) 208px, 208px"
                   className="object-contain object-left"
                 />
               </div>
             </Link>
-            <p className="font-sans font-normal text-base text-slate-500 leading-relaxed mb-8 max-w-sm">
-              Redefining high-end beauty. Our carefully curated collections are designed to elevate your everyday routines to extraordinary premium experiences.
+            <p className="font-sans font-normal text-base text-ink-500 leading-relaxed mb-8 max-w-sm">
+              Handcrafted soaps for a better bath. Our carefully crafted bars are made with pure ingredients to turn your everyday routine into a refreshing ritual.
             </p>
             <div className="flex gap-3 flex-wrap">
               {socials.map(({ icon: Icon, label, href }) => (
@@ -114,7 +114,7 @@ export default function Footer() {
                   href={href}
                   aria-label={label}
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full border border-slate-300 flex items-center justify-center text-slate-500 hover:border-blue-500 hover:text-blue-500 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                  className="w-10 h-10 rounded-full border border-ink-300 flex items-center justify-center text-ink-500 hover:border-brand-500 hover:text-brand-500 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
                 >
                   <Icon size={16} strokeWidth={2} />
                 </a>
@@ -132,7 +132,7 @@ export default function Footer() {
                   <li key={label}>
                     <Link
                       href={href}
-                      className="font-sans font-normal text-base text-slate-600 hover:text-blue-800 transition-colors duration-200"
+                      className="font-sans font-normal text-base text-ink-600 hover:text-brand-800 transition-colors duration-200"
                     >
                       {label}
                     </Link>
@@ -149,7 +149,7 @@ export default function Footer() {
                   <li key={label}>
                     <Link
                       href={href}
-                      className="font-sans font-normal text-base text-slate-600 hover:text-blue-800 transition-colors duration-200"
+                      className="font-sans font-normal text-base text-ink-600 hover:text-brand-800 transition-colors duration-200"
                     >
                       {label}
                     </Link>
@@ -171,14 +171,14 @@ export default function Footer() {
                     aria-label={`${label}: ${value}`}
                     className="flex items-start gap-4 group"
                   >
-                    <div className="w-11 h-11 rounded-xl bg-blue-50 group-hover:bg-blue-100 flex items-center justify-center flex-shrink-0 transition-colors duration-200">
-                      <Icon size={18} className="text-blue-500" aria-hidden="true" />
+                    <div className="w-11 h-11 rounded-xl bg-brand-50 group-hover:bg-brand-100 flex items-center justify-center flex-shrink-0 transition-colors duration-200">
+                      <Icon size={18} className="text-brand-500" aria-hidden="true" />
                     </div>
                     <div>
-                      <p className="font-sans font-semibold text-xs tracking-[0.15em] uppercase text-slate-500 mb-1">
+                      <p className="font-sans font-semibold text-xs tracking-[0.15em] uppercase text-ink-500 mb-1">
                         {label}
                       </p>
-                      <p className="font-sans font-medium text-sm text-slate-900 whitespace-pre-line leading-relaxed">
+                      <p className="font-sans font-medium text-sm text-ink-900 whitespace-pre-line leading-relaxed">
                         {value}
                       </p>
                     </div>
@@ -190,10 +190,10 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="font-sans font-normal text-sm text-slate-500 flex items-center gap-1.5">
-            © {year} Our Brand. Crafted with{" "}
-            <Heart size={14} className="text-blue-500 fill-blue-500 inline" />{" "}
+        <div className="mt-16 pt-8 border-t border-ink-200 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="font-sans font-normal text-sm text-ink-500 flex items-center gap-1.5">
+            © {year} CHOOSEME Soaps. Crafted with{" "}
+            <Heart size={14} className="text-brand-500 fill-brand-500 inline" />{" "}
             for you.
           </p>
           <div className="flex items-center gap-2 flex-wrap justify-center">
@@ -201,12 +201,12 @@ export default function Footer() {
               <span key={item} className="flex items-center gap-2">
                 <Link
                   href={item === "Privacy Policy" ? "/privacy-policy" : "/terms-and-conditions"}
-                  className="font-sans font-normal text-sm text-slate-500 hover:text-slate-700 transition-colors duration-200"
+                  className="font-sans font-normal text-sm text-ink-500 hover:text-ink-700 transition-colors duration-200"
                 >
                   {item}
                 </Link>
                 {i < arr.length - 1 && (
-                  <span className="text-slate-300 select-none">•</span>
+                  <span className="text-ink-300 select-none">•</span>
                 )}
               </span>
             ))}

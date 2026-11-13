@@ -86,7 +86,7 @@ function VerifyOtpContent() {
 
       // Success! Save user and redirect to home page
       if (res.data.data) {
-        localStorage.setItem('heedy_user', JSON.stringify(res.data.data));
+        localStorage.setItem('chooseme_user', JSON.stringify(res.data.data));
       }
       router.push("/");
     } catch (err: any) {
@@ -119,35 +119,35 @@ function VerifyOtpContent() {
   return (
     <div className="min-h-screen flex flex-col lg:flex-row pt-24">
       {/* ── Left Panel: Brand Context ── */}
-      <div className="bg-[#F5F0EB] lg:w-5/12 flex flex-col justify-center px-8 pt-28 pb-16 lg:p-16 xl:p-24 relative overflow-hidden">
+      <div className="bg-brand-50 lg:w-5/12 flex flex-col justify-center px-8 pt-28 pb-16 lg:p-16 xl:p-24 relative overflow-hidden">
         <div className="max-w-md mx-auto relative z-10 w-full">
-          <p className="font-sans font-bold text-xs uppercase tracking-[0.25em] text-slate-800 mb-6 lg:mb-8">
-            HEEDY MEMBERSHIP
+          <p className="font-sans font-bold text-xs uppercase tracking-[0.25em] text-ink-800 mb-6 lg:mb-8">
+            CHOOSEME MEMBERSHIP
           </p>
           
-          <h1 className="font-serif font-normal text-4xl lg:text-5xl xl:text-6xl text-[#0A192F] leading-tight mb-6">
-            Join the world of refined beauty.
+          <h1 className="font-serif font-normal text-4xl lg:text-5xl xl:text-6xl text-brand-900 leading-tight mb-6">
+            Join the world of pure, handcrafted soaps.
           </h1>
           
-          <p className="font-sans text-slate-600 text-base leading-relaxed mb-12 max-w-sm">
+          <p className="font-sans text-ink-600 text-base leading-relaxed mb-12 max-w-sm">
             Create an account to unlock exclusive benefits, personalized recommendations, and a faster checkout experience.
           </p>
           
-          <div className="flex items-center gap-3 text-slate-700">
-            <ShieldCheck size={20} className="text-slate-900" />
+          <div className="flex items-center gap-3 text-ink-700">
+            <ShieldCheck size={20} className="text-ink-900" />
             <span className="font-sans font-medium text-sm">Secure Verification</span>
           </div>
         </div>
       </div>
 
       {/* ── Right Panel: OTP Form ── */}
-      <div className="bg-white lg:w-7/12 flex flex-col justify-center px-8 py-16 lg:p-16 xl:p-24 overflow-y-auto">
+      <div className="bg-cream lg:w-7/12 flex flex-col justify-center px-8 py-16 lg:p-16 xl:p-24 overflow-y-auto">
         <div className="max-w-xl mx-auto w-full">
-          <h2 className="font-sans font-bold text-4xl md:text-5xl text-[#0A192F] mb-3">
+          <h2 className="font-sans font-bold text-4xl md:text-5xl text-brand-900 mb-3">
             Verify Email
           </h2>
-          <p className="font-sans text-slate-500 text-base mb-10">
-            We've sent a 6-digit code to <span className="font-medium text-slate-800">{email}</span>
+          <p className="font-sans text-ink-500 text-base mb-10">
+            We've sent a 6-digit code to <span className="font-medium text-ink-800">{email}</span>
           </p>
 
           <form onSubmit={onSubmit} className="space-y-8">
@@ -158,18 +158,18 @@ function VerifyOtpContent() {
             )}
 
             {resendSuccess && (
-              <div className="bg-green-50 text-green-700 p-4 rounded-xl text-sm font-medium border border-green-100">
+              <div className="bg-brand-50 text-brand-700 p-4 rounded-xl text-sm font-medium border border-brand-100">
                 {resendSuccess}
               </div>
             )}
             
             {/* OTP Input Fields */}
             <div>
-              <label className="block font-sans font-bold text-xs uppercase tracking-wider text-slate-800 mb-4">
+              <label className="block font-sans font-bold text-xs uppercase tracking-wider text-ink-800 mb-4">
                 ENTER OTP CODE
               </label>
               
-              <div className="flex items-center justify-between gap-2 sm:gap-4 border border-slate-300 rounded-2xl p-4 sm:p-6 bg-white shadow-sm" onPaste={handlePaste}>
+              <div className="flex items-center justify-between gap-2 sm:gap-4 border border-ink-300 rounded-2xl p-4 sm:p-6 bg-cream shadow-sm" onPaste={handlePaste}>
                 {otp.map((digit, index) => (
                   <input
                     key={index}
@@ -180,7 +180,7 @@ function VerifyOtpContent() {
                     value={digit}
                     onChange={(e) => handleChange(index, e.target.value)}
                     onKeyDown={(e) => handleKeyDown(index, e)}
-                    className="w-10 h-12 sm:w-12 sm:h-14 sm:text-2xl text-xl text-center font-bold text-slate-900 bg-transparent border-none focus:outline-none focus:ring-0 placeholder:text-slate-300"
+                    className="w-10 h-12 sm:w-12 sm:h-14 sm:text-2xl text-xl text-center font-bold text-ink-900 bg-transparent border-none focus:outline-none focus:ring-0 placeholder:text-ink-300"
                     placeholder="0"
                   />
                 ))}
@@ -191,7 +191,7 @@ function VerifyOtpContent() {
             <button
               type="submit"
               disabled={isSubmitting || otp.join("").length !== 6}
-              className="w-full bg-[#0A192F] text-white font-bold text-base rounded-xl py-4 sm:py-5 flex items-center justify-center gap-2 group hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed"
+              className="w-full bg-brand-900 text-white font-bold text-base rounded-xl py-4 sm:py-5 flex items-center justify-center gap-2 group hover:bg-ink-800 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {isSubmitting ? "Verifying..." : "Verify & Continue"} 
             </button>
@@ -202,14 +202,14 @@ function VerifyOtpContent() {
             <button 
               onClick={handleResend}
               type="button"
-              className="font-sans font-bold text-sm text-slate-900 hover:text-blue-600 transition-colors"
+              className="font-sans font-bold text-sm text-ink-900 hover:text-brand-600 transition-colors"
             >
               Resend Verification Code
             </button>
             <div className="block">
               <Link 
                 href="/register" 
-                className="font-sans text-sm text-slate-500 hover:text-slate-900 transition-colors underline underline-offset-4 decoration-slate-300 hover:decoration-slate-900"
+                className="font-sans text-sm text-ink-500 hover:text-ink-900 transition-colors underline underline-offset-4 decoration-ink-300 hover:decoration-ink-900"
               >
                 Back to Registration
               </Link>
@@ -225,8 +225,8 @@ function VerifyOtpContent() {
 export default function VerifyOtpPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-white pt-20 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-slate-900"></div>
+      <div className="min-h-screen bg-cream pt-20 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-ink-900"></div>
       </div>
     }>
       <VerifyOtpContent />

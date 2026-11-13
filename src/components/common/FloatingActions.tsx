@@ -23,7 +23,7 @@ export default function FloatingActions() {
       {/* Scroll to Top */}
       <button
         onClick={scrollToTop}
-        className={`w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 hover:scale-110 transition-all duration-300 flex items-center justify-center ${
+        className={`w-10 h-10 md:w-12 md:h-12 rounded-full bg-brand-600 text-white shadow-lg hover:bg-brand-700 hover:scale-110 transition-all duration-300 flex items-center justify-center ${
           showScrollTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
         } motion-reduce:transition-none motion-reduce:transform-none`}
         aria-label="Scroll to top"
@@ -36,7 +36,7 @@ export default function FloatingActions() {
         href="https://wa.me/9074881551"
         target="_blank"
         rel="noopener noreferrer"
-        className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-green-500 text-white shadow-lg hover:bg-green-600 hover:scale-110 transition-all duration-200 flex items-center justify-center motion-reduce:transition-none motion-reduce:transform-none"
+        className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-brand-500 text-white shadow-lg hover:bg-brand-600 hover:scale-110 transition-all duration-200 flex items-center justify-center motion-reduce:transition-none motion-reduce:transform-none"
         aria-label="Contact us on WhatsApp"
       >
         <MessageCircle size={20} />

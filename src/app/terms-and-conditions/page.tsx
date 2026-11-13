@@ -14,19 +14,19 @@ export default function TermsAndConditionsPage() {
 
   return (
     <>
-      <title>Terms & Conditions – HEEDY</title>
+      <title>Terms & Conditions – CHOOSEME</title>
       <meta
         name="description"
-        content="Read the Terms & Conditions of HEEDY. Learn about the rules and regulations for using our website."
+        content="Read the Terms & Conditions of CHOOSEME. Learn about the rules and regulations for using our website."
       />
 
-      <main id="top" className="min-h-screen bg-slate-50">
+      <main id="top" className="min-h-screen bg-ink-50">
         {/* ── Hero ─────────────────────────────────────────────────── */}
         <section
           className="relative w-full pt-32 md:pt-40 pb-36 md:pb-48"
           style={{
             background:
-              "linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #1E40AF 100%)",
+              "linear-gradient(135deg, #002412 0%, #00562a 50%, #006f35 100%)",
           }}
         >
           <div className="max-w-4xl mx-auto px-6 text-center">
@@ -63,7 +63,7 @@ export default function TermsAndConditionsPage() {
 
             {/* Subheadline */}
             <p
-              className="text-slate-400 text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
+              className="text-ink-200 text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
               style={{
                 opacity: heroVisible ? 1 : 0,
                 transform: heroVisible ? "translateY(0)" : "translateY(1rem)",
@@ -71,7 +71,7 @@ export default function TermsAndConditionsPage() {
                   "opacity 0.6s ease 300ms, transform 0.6s ease 300ms",
               }}
             >
-              Welcome to HEEDY. By accessing or using our website, you agree to comply with these Terms & Conditions.
+              Welcome to CHOOSEME. By accessing or using our website, you agree to comply with these Terms & Conditions.
             </p>
           </div>
         </section>
@@ -80,19 +80,19 @@ export default function TermsAndConditionsPage() {
         <section
           className="relative z-10 px-6 md:px-12 lg:px-20 max-w-4xl mx-auto -mt-20 md:-mt-24 mb-20"
         >
-          <div className="bg-white rounded-3xl shadow-sm p-8 md:p-12 lg:p-16 border border-slate-100">
-            <p className="text-slate-500 mb-8 font-medium">Last Updated: May 2, 2026</p>
+          <div className="bg-cream rounded-3xl shadow-sm p-8 md:p-12 lg:p-16 border border-ink-100">
+            <p className="text-ink-500 mb-8 font-medium">Last Updated: May 2, 2026</p>
 
-            <div className="space-y-8 text-slate-700 leading-relaxed font-sans">
+            <div className="space-y-8 text-ink-700 leading-relaxed font-sans">
               <section>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">1. General</h2>
+                <h2 className="text-2xl font-bold text-ink-900 mb-4">1. General</h2>
                 <p>
-                  HEEDY operates this website to provide beauty/cosmetic products. By using this site, you confirm that you are at least 18 years old or using it under supervision.
+                  CHOOSEME operates this website to provide soap and bath products. By using this site, you confirm that you are at least 18 years old or using it under supervision.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">2. Products & Pricing</h2>
+                <h2 className="text-2xl font-bold text-ink-900 mb-4">2. Products & Pricing</h2>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>All prices are listed in INR (₹)</li>
                   <li>We reserve the right to change prices anytime without notice</li>
@@ -101,7 +101,7 @@ export default function TermsAndConditionsPage() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">3. Orders</h2>
+                <h2 className="text-2xl font-bold text-ink-900 mb-4">3. Orders</h2>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>Orders are confirmed only after successful payment</li>
                   <li>We reserve the right to cancel orders due to stock issues or suspicious activity</li>
@@ -109,7 +109,7 @@ export default function TermsAndConditionsPage() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">4. Shipping</h2>
+                <h2 className="text-2xl font-bold text-ink-900 mb-4">4. Shipping</h2>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>Delivery timelines may vary depending on location</li>
                   <li>Delays due to courier issues are not under our control</li>
@@ -117,7 +117,7 @@ export default function TermsAndConditionsPage() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">5. Returns & Refunds</h2>
+                <h2 className="text-2xl font-bold text-ink-900 mb-4">5. Returns & Refunds</h2>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>Returns accepted within 7 days of delivery</li>
                   <li>Products must be unused and in original packaging</li>
@@ -126,15 +126,15 @@ export default function TermsAndConditionsPage() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">6. Intellectual Property</h2>
+                <h2 className="text-2xl font-bold text-ink-900 mb-4">6. Intellectual Property</h2>
                 <p>
-                  All content (logo, images, text) belongs to HEEDY and cannot be copied or reused.
+                  All content (logo, images, text) belongs to CHOOSEME and cannot be copied or reused.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">7. Limitation of Liability</h2>
-                <p className="mb-4">HEEDY is not liable for:</p>
+                <h2 className="text-2xl font-bold text-ink-900 mb-4">7. Limitation of Liability</h2>
+                <p className="mb-4">CHOOSEME is not liable for:</p>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>Allergic reactions (please do patch test)</li>
                   <li>Delays in delivery</li>
@@ -143,16 +143,16 @@ export default function TermsAndConditionsPage() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">8. Governing Law</h2>
+                <h2 className="text-2xl font-bold text-ink-900 mb-4">8. Governing Law</h2>
                 <p>
                   These terms are governed by the laws of India.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">9. Contact Us</h2>
-                <p className="mb-2">Email: <a href="mailto:infoheedy@gmail.com" className="text-blue-600 hover:text-blue-800 transition-colors">infoheedy@gmail.com</a></p>
-                <p>Phone: <a href="tel:+919074881551" className="text-blue-600 hover:text-blue-800 transition-colors">9074881551</a></p>
+                <h2 className="text-2xl font-bold text-ink-900 mb-4">9. Contact Us</h2>
+                <p className="mb-2">Email: <a href="mailto:choosemenatural@gmail.com" className="text-brand-600 hover:text-brand-800 transition-colors">choosemenatural@gmail.com</a></p>
+                <p>Phone: <a href="tel:+919074881551" className="text-brand-600 hover:text-brand-800 transition-colors">9074881551</a></p>
               </section>
             </div>
           </div>

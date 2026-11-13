@@ -35,7 +35,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const getToken = () => {
     if (typeof window !== "undefined") {
-      const userStr = localStorage.getItem("heedy_user");
+      const userStr = localStorage.getItem("chooseme_user");
       if (userStr) {
         return JSON.parse(userStr).token;
       }
@@ -67,15 +67,15 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
               };
             });
             setCartItems(items);
-            localStorage.setItem("heedy_cart", JSON.stringify(items));
+            localStorage.setItem("chooseme_cart", JSON.stringify(items));
           }
         } catch (err) {
           console.error("Failed to fetch cart from backend", err);
-          const localCart = localStorage.getItem("heedy_cart");
+          const localCart = localStorage.getItem("chooseme_cart");
           if (localCart) setCartItems(JSON.parse(localCart));
         }
       } else {
-        const localCart = localStorage.getItem("heedy_cart");
+        const localCart = localStorage.getItem("chooseme_cart");
         if (localCart) setCartItems(JSON.parse(localCart));
       }
       setIsLoaded(true);
@@ -93,7 +93,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       } else {
         newCart = [...prev, item];
       }
-      localStorage.setItem("heedy_cart", JSON.stringify(newCart));
+      localStorage.setItem("chooseme_cart", JSON.stringify(newCart));
       return newCart;
     });
 
@@ -119,7 +119,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       const existing = prev.find(i => i.id === id && i.size === size);
       const validQty = qty;
       const newCart = prev.map(i => (i.id === id && i.size === size) ? { ...i, quantity: validQty } : i);
-      localStorage.setItem("heedy_cart", JSON.stringify(newCart));
+      localStorage.setItem("chooseme_cart", JSON.stringify(newCart));
       return newCart;
     });
 
@@ -141,7 +141,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const removeItem = async (id: string) => {
     setCartItems(prev => {
       const newCart = prev.filter(i => i.id !== id);
-      localStorage.setItem("heedy_cart", JSON.stringify(newCart));
+      localStorage.setItem("chooseme_cart", JSON.stringify(newCart));
       return newCart;
     });
 
@@ -160,7 +160,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const clearCart = async () => {
     setCartItems([]);
-    localStorage.removeItem("heedy_cart");
+    localStorage.removeItem("chooseme_cart");
 
     const token = getToken();
     if (token) {

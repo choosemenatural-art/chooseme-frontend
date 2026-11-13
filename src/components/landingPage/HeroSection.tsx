@@ -30,9 +30,9 @@ const DEFAULT_SLIDES: ISlide[] = [
     id: "default-1",
     image: "/hero-bg.png",
     mobileImage: "/hero-bg.png",
-    alt: "Premium skincare dynamic hydration",
-    headline: "DYNAMIC HYDRATION",
-    subheadline: "Sweat-resistant, feather-light, invisible finish.",
+    alt: "Premium handcrafted soap with rich lather",
+    headline: "PURE LATHER",
+    subheadline: "Gentle cleansing, rich foam, a fresh feeling that lasts.",
   },
 ];
 
@@ -174,17 +174,17 @@ export default function HeroSection() {
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
-            className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white"
+            className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-cream"
           >
-            <h1 className="text-black font-sans font-black text-6xl md:text-8xl tracking-[0.2em] uppercase mb-8">
-              HEEDY
+            <h1 className="text-ink-950 font-sans font-black text-4xl sm:text-5xl md:text-7xl tracking-[0.2em] uppercase mb-8">
+              CHOOSEME
             </h1>
-            <div className="w-64 md:w-80 h-[2px] bg-slate-100 overflow-hidden relative">
+            <div className="w-64 md:w-80 h-[2px] bg-ink-100 overflow-hidden relative">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: "100%" }}
                 transition={{ duration: 2, ease: "easeInOut" }}
-                className="h-full bg-blue-400"
+                className="h-full bg-brand-400"
               />
             </div>
           </motion.div>
@@ -283,8 +283,8 @@ export default function HeroSection() {
                 aria-selected={currentSlide === index}
                 aria-label={`Go to slide ${index + 1}`}
                 onClick={() => goToSlide(index)}
-                className={`transition-colors duration-300 motion-reduce:transition-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black ${currentSlide === index
-                    ? "w-2.5 h-2.5 rounded-full bg-blue-500"
+                className={`transition-colors duration-300 motion-reduce:transition-none focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-black ${currentSlide === index
+                    ? "w-2.5 h-2.5 rounded-full bg-brand-500"
                     : "w-2.5 h-2.5 rounded-full bg-white/50"
                   }`}
               />

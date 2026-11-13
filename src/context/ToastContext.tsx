@@ -57,22 +57,22 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
   const getStyles = (type: ToastType) => {
     switch (type) {
       case "success":
-        return "bg-emerald-50 border-emerald-200 text-emerald-800";
+        return "bg-brand-50 border-brand-200 text-brand-800";
       case "error":
         return "bg-red-50 border-red-200 text-red-800";
       case "warning":
         return "bg-amber-50 border-amber-200 text-amber-800";
       default:
-        return "bg-blue-50 border-blue-200 text-blue-800";
+        return "bg-brand-50 border-brand-200 text-brand-800";
     }
   };
 
   const getIconColor = (type: ToastType) => {
     switch (type) {
-      case "success": return "text-emerald-500";
+      case "success": return "text-brand-500";
       case "error": return "text-red-500";
       case "warning": return "text-amber-500";
-      default: return "text-blue-500";
+      default: return "text-brand-500";
     }
   };
 

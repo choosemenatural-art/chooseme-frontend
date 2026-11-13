@@ -59,9 +59,9 @@ const CONTACT_CARDS: ContactCardData[] = [
     id: "email",
     Icon: Mail,
     title: "Email Us",
-    primary: "infoheedy@gmail.com",
-    href: "mailto:infoheedy@gmail.com",
-    ariaLabel: "Email us at infoheedy@gmail.com",
+    primary: "choosemenatural@gmail.com",
+    href: "mailto:choosemenatural@gmail.com",
+    ariaLabel: "Email us at choosemenatural@gmail.com",
   },
   {
     id: "hours",
@@ -120,17 +120,17 @@ function ContactCard({
       }}
     >
       <div
-        className="bg-white rounded-2xl border border-slate-100 p-8 md:p-10 text-center shadow-sm
+        className="bg-cream rounded-2xl border border-ink-100 p-8 md:p-10 text-center shadow-sm
                    md:group-hover:shadow-xl md:group-hover:-translate-y-1.5 transition-all duration-400 ease-out h-full"
         aria-label={`${card.title} contact information`}
       >
         <div
-          className="icon-box w-16 h-16 rounded-2xl bg-blue-600 flex items-center justify-center mx-auto mb-6 transition-all duration-400 ease-out md:group-hover:scale-110 md:group-hover:bg-blue-700 md:group-hover:shadow-md"
+          className="icon-box w-16 h-16 rounded-2xl bg-brand-600 flex items-center justify-center mx-auto mb-6 transition-all duration-400 ease-out md:group-hover:scale-110 md:group-hover:bg-brand-700 md:group-hover:shadow-md"
         >
           <card.Icon size={28} className="text-white" />
         </div>
 
-        <h3 className="font-sans font-bold text-xl md:text-2xl text-slate-900 mb-3 transition-colors duration-400 md:group-hover:text-blue-800">
+        <h3 className="font-sans font-bold text-xl md:text-2xl text-ink-900 mb-3 transition-colors duration-400 md:group-hover:text-brand-800">
           {card.title}
         </h3>
 
@@ -138,22 +138,22 @@ function ContactCard({
           <a
             href={card.href}
             aria-label={card.ariaLabel}
-            className="font-semibold text-base md:text-lg text-blue-800 hover:text-blue-600 transition-colors mb-2 block break-all"
+            className="font-semibold text-base md:text-lg text-brand-800 hover:text-brand-600 transition-colors mb-2 block break-all"
           >
             {card.primary}
           </a>
         ) : (
-          <p className="font-semibold text-base md:text-lg text-blue-800 mb-2">
+          <p className="font-semibold text-base md:text-lg text-brand-800 mb-2">
             {card.primary}
           </p>
         )}
 
         {card.secondary && (
-          <p className="text-slate-500 text-sm md:text-base">{card.secondary}</p>
+          <p className="text-ink-500 text-sm md:text-base">{card.secondary}</p>
         )}
 
         {card.additional?.map((line) => (
-          <p key={line} className="text-slate-500 text-sm md:text-base">
+          <p key={line} className="text-ink-500 text-sm md:text-base">
             {line}
           </p>
         ))}
@@ -165,7 +165,7 @@ function ContactCard({
 // ─── Field wrapper ────────────────────────────────────────────────────────────
 
 const inputCls =
-  "w-full bg-slate-50 border border-slate-200 rounded-xl px-5 py-4 text-slate-900 placeholder:text-slate-400 text-sm font-sans focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:bg-white transition-all duration-200 autofill:bg-slate-50";
+  "w-full bg-ink-50 border border-ink-200 rounded-xl px-5 py-4 text-ink-900 placeholder:text-ink-400 text-sm font-sans focus:outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:bg-cream transition-all duration-200 autofill:bg-ink-50";
 
 function FieldWrapper({
   label,
@@ -180,7 +180,7 @@ function FieldWrapper({
 }) {
   return (
     <div className="flex flex-col">
-      <label className="font-sans font-semibold text-sm text-slate-900 mb-2">
+      <label className="font-sans font-semibold text-sm text-ink-900 mb-2">
         {label}
         {required && (
           <span className="text-red-500 ml-0.5" aria-hidden="true">
@@ -237,13 +237,13 @@ function ContactForm() {
 
   return (
     <section
-      className="w-full bg-slate-100 py-12 md:py-16 lg:py-20"
+      className="w-full bg-ink-100 py-12 md:py-16 lg:py-20"
       aria-label="Contact form section"
     >
       <div className="max-w-3xl mx-auto px-6 md:px-12">
         <div
           ref={ref}
-          className="bg-white rounded-3xl shadow-sm overflow-hidden"
+          className="bg-cream rounded-3xl shadow-sm overflow-hidden"
           style={{
             opacity: visible ? 1 : 0,
             transform: visible ? "translateY(0)" : "translateY(1.5rem)",
@@ -252,7 +252,7 @@ function ContactForm() {
         >
           {/* Blue top accent */}
           <div
-            className="h-1 bg-blue-500 w-full"
+            className="h-1 bg-brand-500 w-full"
             style={{
               transform: visible ? "scaleX(1)" : "scaleX(0)",
               transformOrigin: "center",
@@ -263,10 +263,10 @@ function ContactForm() {
           <div className="p-8 md:p-12">
             {/* Header */}
             <div className="text-center mb-8 md:mb-10">
-              <h2 className="font-sans font-bold text-3xl md:text-4xl text-slate-900 mb-4">
+              <h2 className="font-sans font-bold text-3xl md:text-4xl text-ink-900 mb-4">
                 Send us a Message
               </h2>
-              <p className="font-sans text-slate-500 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+              <p className="font-sans text-ink-500 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
                 Fill out the form below and we&apos;ll get back to you within 24 hours.
               </p>
             </div>
@@ -274,19 +274,19 @@ function ContactForm() {
             {submitted ? (
               /* ── Success state ── */
               <div className="flex flex-col items-center justify-center py-14 gap-5 text-center">
-                <div className="w-20 h-20 rounded-full bg-blue-50 flex items-center justify-center">
-                  <CheckCircle2 size={42} className="text-blue-600" />
+                <div className="w-20 h-20 rounded-full bg-brand-50 flex items-center justify-center">
+                  <CheckCircle2 size={42} className="text-brand-600" />
                 </div>
-                <h3 className="font-bold text-2xl text-slate-900">
+                <h3 className="font-bold text-2xl text-ink-900">
                   Message Sent!
                 </h3>
-                <p className="text-slate-500 max-w-sm leading-relaxed">
+                <p className="text-ink-500 max-w-sm leading-relaxed">
                   Thank you for reaching out. Our team will get back to you
                   within 24 hours.
                 </p>
                 <button
                   onClick={handleReset}
-                  className="mt-2 px-8 py-3 bg-blue-600 text-white font-bold text-sm uppercase tracking-[0.15em] rounded-full hover:bg-blue-700 transition-colors duration-300 shadow-lg shadow-blue-500/30 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                  className="mt-2 px-8 py-3 bg-brand-600 text-white font-bold text-sm uppercase tracking-[0.15em] rounded-full hover:bg-brand-700 transition-colors duration-300 shadow-lg shadow-brand-500/30 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
                 >
                   Send Another
                 </button>
@@ -397,13 +397,13 @@ function ContactForm() {
                     disabled={isSubmitting}
                     aria-label="Send message"
                     className="w-full mt-6 md:mt-8 flex items-center justify-center gap-3
-                             bg-blue-600 text-white py-4 md:py-5 rounded-full
+                             bg-brand-600 text-white py-4 md:py-5 rounded-full
                              font-bold text-sm tracking-[0.15em] uppercase
-                             hover:bg-blue-700 active:scale-[0.98]
+                             hover:bg-brand-700 active:scale-[0.98]
                              transition-all duration-300
-                             shadow-lg shadow-blue-500/30
+                             shadow-lg shadow-brand-500/30
                              disabled:opacity-60 disabled:cursor-not-allowed
-                             focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+                             focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2
                              motion-reduce:transition-none"
                   >
                     {isSubmitting ? (
@@ -440,20 +440,20 @@ export default function ContactUsPage() {
 
   return (
     <>
-      <title>Contact Us – HEEDY | We&apos;d Love to Hear From You</title>
+      <title>Contact Us – CHOOSEME | We&apos;d Love to Hear From You</title>
       <meta
         name="description"
-        content="Get in touch with the HEEDY team. Call, email, or send us a message — we're here to help with all your skincare needs."
+        content="Get in touch with the CHOOSEME team. Call, email, or send us a message — we're here to help with everything about our soaps."
       />
 
-      <main id="top" className="min-h-screen bg-slate-50">
+      <main id="top" className="min-h-screen bg-ink-50">
 
         {/* ── Hero ─────────────────────────────────────────────────── */}
         <section
           className="relative w-full pt-32 md:pt-40 pb-36 md:pb-48"
           style={{
             background:
-              "linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #1E40AF 100%)",
+              "linear-gradient(135deg, #002412 0%, #00562a 50%, #006f35 100%)",
           }}
         >
           <div className="max-w-4xl mx-auto px-6 text-center">
@@ -477,8 +477,8 @@ export default function ContactUsPage() {
 
             {/* Pill */}
             <div
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-blue-300/30
-                         text-blue-300 mb-7 hover:border-blue-300/60 hover:bg-blue-400/10 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-brand-300/30
+                         text-brand-300 mb-7 hover:border-brand-300/60 hover:bg-brand-400/10 transition-all duration-300"
               aria-label="Get in touch with our team"
               style={{
                 opacity: heroVisible ? 1 : 0,
@@ -506,7 +506,7 @@ export default function ContactUsPage() {
 
             {/* Subheadline */}
             <p
-              className="text-slate-400 text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
+              className="text-ink-200 text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
               style={{
                 opacity: heroVisible ? 1 : 0,
                 transform: heroVisible ? "translateY(0)" : "translateY(1rem)",
@@ -514,7 +514,7 @@ export default function ContactUsPage() {
               }}
             >
               Have questions about our products or your order? Our team is here
-              to help you with everything skincare.
+              to help you with everything about our soaps.
             </p>
           </div>
         </section>
@@ -577,7 +577,7 @@ function FAQSection() {
   }, []);
 
   return (
-    <section id="faq" className="w-full bg-white py-16 md:py-20 lg:py-24" aria-label="Frequently asked questions">
+    <section id="faq" className="w-full bg-cream py-16 md:py-20 lg:py-24" aria-label="Frequently asked questions">
       <div className="max-w-3xl mx-auto px-6 md:px-8">
 
         {/* ── Header ── */}
@@ -587,7 +587,7 @@ function FAQSection() {
         >
           {/* Eyebrow */}
           <p
-            className="font-sans font-semibold text-xs tracking-[0.2em] uppercase text-blue-500 mb-4"
+            className="font-sans font-semibold text-xs tracking-[0.2em] uppercase text-brand-500 mb-4"
             style={{
               opacity: headerVisible ? 1 : 0,
               transition: "opacity 0.4s ease 0ms",
@@ -598,7 +598,7 @@ function FAQSection() {
 
           {/* Headline */}
           <h2
-            className="font-sans font-bold text-3xl md:text-4xl lg:text-5xl text-slate-900 leading-tight mb-6"
+            className="font-sans font-bold text-3xl md:text-4xl lg:text-5xl text-ink-900 leading-tight mb-6"
             style={{
               opacity: headerVisible ? 1 : 0,
               transform: headerVisible ? "translateY(0)" : "translateY(1rem)",
@@ -610,14 +610,14 @@ function FAQSection() {
 
           {/* Subheadline */}
           <p
-            className="font-sans text-slate-500 text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
+            className="font-sans text-ink-500 text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
             style={{
               opacity: headerVisible ? 1 : 0,
               transform: headerVisible ? "translateY(0)" : "translateY(1rem)",
               transition: "opacity 0.6s ease 200ms, transform 0.6s ease 200ms",
             }}
           >
-            Find quick answers to common questions about our premium skincare experience.
+            Find quick answers to common questions about our handcrafted soaps.
           </p>
         </div>
 
@@ -630,18 +630,18 @@ function FAQSection() {
           >
             {loading ? (
               <div className="flex justify-center py-8">
-                <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+                <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-brand-500"></div>
               </div>
             ) : faqs.length === 0 ? (
-              <div className="text-center py-8 text-slate-500 font-medium">No frequently asked questions available at the moment.</div>
+              <div className="text-center py-8 text-ink-500 font-medium">No frequently asked questions available at the moment.</div>
             ) : faqs.map((item, i) => (
               <RadixAccordion.Item
                 key={item._id}
                 value={item._id}
-                className="border border-slate-200 rounded-2xl bg-white overflow-hidden
-                           hover:border-slate-300 transition-colors duration-200
-                           data-[state=open]:border-slate-300
-                           focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2"
+                className="border border-ink-200 rounded-2xl bg-cream overflow-hidden
+                           hover:border-ink-300 transition-colors duration-200
+                           data-[state=open]:border-ink-300
+                           focus-within:ring-2 focus-within:ring-brand-500 focus-within:ring-offset-2"
                 style={{
                   opacity: listVisible ? 1 : 0,
                   transform: listVisible ? "translateY(0)" : "translateY(1rem)",
@@ -656,14 +656,14 @@ function FAQSection() {
                                focus:outline-none"
                     aria-label={item.question}
                   >
-                    <span className="font-sans font-bold text-base md:text-lg text-slate-900 pr-4">
+                    <span className="font-sans font-bold text-base md:text-lg text-ink-900 pr-4">
                       {item.question}
                     </span>
                     <ChevronRight
                       size={20}
                       aria-hidden="true"
-                      className="flex-shrink-0 text-slate-400
-                                 group-data-[state=open]:text-blue-500
+                      className="flex-shrink-0 text-ink-400
+                                 group-data-[state=open]:text-brand-500
                                  group-data-[state=open]:rotate-90
                                  transition-all duration-300 motion-reduce:transition-none"
                     />
@@ -675,7 +675,7 @@ function FAQSection() {
                   className="overflow-hidden accordion-content"
                 >
                   <div className="px-6 md:px-8 pb-6">
-                    <p className="font-sans text-slate-600 text-base leading-relaxed">
+                    <p className="font-sans text-ink-600 text-base leading-relaxed">
                       {item.answer}
                     </p>
                   </div>
@@ -693,7 +693,7 @@ function FAQSection() {
             transition: `opacity 0.5s ease ${300 + FAQ_ITEMS.length * 80 + 100}ms`,
           }}
         >
-          <p className="font-sans text-slate-500 text-base mb-4">
+          <p className="font-sans text-ink-500 text-base mb-4">
             Still have questions?
           </p>
           <a
@@ -703,10 +703,10 @@ function FAQSection() {
               document.querySelector("form[aria-label='Contact form']")?.scrollIntoView({ behavior: "smooth", block: "center" });
             }}
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full
-                       bg-blue-600 text-white font-bold text-sm tracking-[0.12em] uppercase
-                       hover:bg-blue-700 transition-colors duration-300
-                       shadow-lg shadow-blue-500/30
-                       focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+                       bg-brand-600 text-white font-bold text-sm tracking-[0.12em] uppercase
+                       hover:bg-brand-700 transition-colors duration-300
+                       shadow-lg shadow-brand-500/30
+                       focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2
                        motion-reduce:transition-none"
             aria-label="Send us a message via the contact form"
           >

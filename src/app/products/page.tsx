@@ -45,7 +45,7 @@ const renderStars = (rating: number) =>
       return <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />;
     if (i === Math.floor(rating) && rating % 1 !== 0)
       return <StarHalf key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />;
-    return <Star key={i} className="w-4 h-4 fill-slate-200 text-slate-200" />;
+    return <Star key={i} className="w-4 h-4 fill-ink-200 text-ink-200" />;
   });
 
 // ─── Product Card ─────────────────────────────────────────────────────────────
@@ -59,7 +59,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
-    const savedUser = localStorage.getItem("heedy_user");
+    const savedUser = localStorage.getItem("chooseme_user");
     if (!savedUser) {
       router.push("/sign-in");
       return;
@@ -87,12 +87,12 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
   return (
     <article
       aria-label={product.name}
-      className="bg-white rounded-2xl overflow-hidden border border-slate-100 hover:shadow-lg transition-shadow duration-300 group flex flex-col motion-reduce:transition-none"
+      className="bg-cream rounded-2xl overflow-hidden border border-ink-100 hover:shadow-lg transition-shadow duration-300 group flex flex-col motion-reduce:transition-none"
       style={{ animationDelay: `${index * 60}ms` }}
     >
-      <Link href={`/products/${product.id}`} className="flex flex-col flex-grow focus:outline-none focus:ring-2 focus:ring-blue-500">
+      <Link href={`/products/${product.id}`} className="flex flex-col flex-grow focus:outline-none focus:ring-2 focus:ring-brand-500">
         {/* Image */}
-        <div className="relative aspect-[3/4] overflow-hidden bg-slate-50">
+        <div className="relative aspect-[3/4] overflow-hidden bg-ink-50">
           {product.images.map((src, i) => (
             <Image
               key={i}
@@ -115,26 +115,26 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
         <div className="px-4 pt-4 pb-3 flex flex-col flex-grow text-center">
           <div className="flex justify-center gap-0.5 mb-2" aria-label={`${product.rating} out of 5 stars`}>
             {renderStars(product.rating)}
-            <span className="text-sm text-slate-400 ml-1">({product.reviewCount})</span>
+            <span className="text-sm text-ink-400 ml-1">({product.reviewCount})</span>
           </div>
-          <h3 className="font-sans font-bold text-sm md:text-base text-slate-900 leading-tight mb-2 md:mb-3 line-clamp-2">
+          <h3 className="font-sans font-bold text-sm md:text-base text-ink-900 leading-tight mb-2 md:mb-3 line-clamp-2">
             {product.name}
           </h3>
           <div className="flex items-center justify-center gap-1.5 md:gap-2 mb-2">
-            <span className="font-bold text-lg md:text-xl text-slate-900">{product.currency}{product.currentPrice}</span>
-            <span className="text-xs md:text-sm line-through text-slate-400">{product.currency}{product.originalPrice}</span>
+            <span className="font-bold text-lg md:text-xl text-ink-900">{product.currency}{product.currentPrice}</span>
+            <span className="text-xs md:text-sm line-through text-ink-400">{product.currency}{product.originalPrice}</span>
           </div>
-          <p className="font-bold text-[10px] uppercase tracking-wider text-red-600 mb-1">{product.dealBadge}</p>
-          <p className="text-xs text-slate-500 line-clamp-1 mb-2">{product.benefit}</p>
+          <p className="font-bold text-[10px] uppercase tracking-wider text-brand-600 mb-1">{product.dealBadge}</p>
+          <p className="text-xs text-ink-500 line-clamp-1 mb-2">{product.benefit}</p>
         </div>
       </Link>
       <div className="px-4 pb-6">
         <button
           onClick={handleAddToCart}
           aria-label={`Add ${product.name} to cart`}
-          className={`w-full text-white font-bold text-[10px] md:text-xs uppercase tracking-widest py-2 md:py-3 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 motion-reduce:transition-none ${isAdded
-            ? "bg-green-600 hover:bg-green-700"
-            : "bg-slate-900 hover:bg-slate-800"
+          className={`w-full text-white font-bold text-[10px] md:text-xs uppercase tracking-widest py-2 md:py-3 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 motion-reduce:transition-none ${isAdded
+            ? "bg-brand-600 hover:bg-brand-700"
+            : "bg-ink-900 hover:bg-ink-800"
             }`}
         >
           {isAdded ? "ADDED TO CART" : "ADD TO CART"}
@@ -185,15 +185,15 @@ function FilterSidebar({
     <aside aria-label="Product filters" className="p-6 space-y-8">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h2 className="font-sans font-bold text-xl tracking-wider uppercase text-slate-900">FILTERS</h2>
-        <button onClick={onClear} className="font-sans font-semibold text-sm text-blue-500 hover:text-blue-700 transition-colors">
+        <h2 className="font-sans font-bold text-xl tracking-wider uppercase text-ink-900">FILTERS</h2>
+        <button onClick={onClear} className="font-sans font-semibold text-sm text-brand-500 hover:text-brand-700 transition-colors">
           CLEAR
         </button>
       </div>
 
       {/* Category */}
       <div>
-        <p className="font-sans font-semibold text-xs tracking-[0.15em] uppercase text-slate-400 mb-4">
+        <p className="font-sans font-semibold text-xs tracking-[0.15em] uppercase text-ink-400 mb-4">
           SHOP BY CATEGORY
         </p>
         <div className="flex flex-col gap-3">
@@ -202,9 +202,9 @@ function FilterSidebar({
               key={cat.id}
               aria-pressed={activeCategory === cat.id}
               onClick={() => onCategoryChange(cat.id)}
-              className={`px-5 py-3 rounded-xl font-sans font-medium text-sm text-left transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 ${activeCategory === cat.id
-                ? "bg-slate-900 text-white"
-                : "bg-slate-100 text-slate-600 border border-slate-200 hover:bg-slate-200"
+              className={`px-5 py-3 rounded-xl font-sans font-medium text-sm text-left transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 ${activeCategory === cat.id
+                ? "bg-ink-900 text-white"
+                : "bg-ink-100 text-ink-600 border border-ink-200 hover:bg-ink-200"
                 }`}
             >
               {cat.label}
@@ -215,7 +215,7 @@ function FilterSidebar({
 
       {/* Price Range */}
       <div>
-        <p className="font-sans font-bold text-sm tracking-[0.15em] uppercase text-slate-400 mb-6 px-1">
+        <p className="font-sans font-bold text-sm tracking-[0.15em] uppercase text-ink-400 mb-6 px-1">
           PRICE RANGE
         </p>
 
@@ -226,7 +226,7 @@ function FilterSidebar({
               <div
                 key={i}
                 style={{ height: `${bar.height}%` }}
-                className="flex-1 rounded-full bg-blue-400"
+                className="flex-1 rounded-full bg-brand-400"
               />
             ))}
           </div>
@@ -242,24 +242,24 @@ function FilterSidebar({
 
             {/* Active track */}
             <div
-              className="absolute h-3.5 bg-blue-600 rounded-full top-1/2 -translate-y-1/2"
+              className="absolute h-3.5 bg-brand-600 rounded-full top-1/2 -translate-y-1/2"
               style={{ left: `${getPercent(pendingMin)}%`, right: `${100 - getPercent(pendingMax)}%` }}
             />
 
             {/* Min handle */}
             <div
-              className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-7 h-7 bg-white rounded-full shadow-[0_2px_10px_rgba(0,0,0,0.2)] flex items-center justify-center cursor-grab"
+              className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-7 h-7 bg-cream rounded-full shadow-[0_2px_10px_rgba(0,0,0,0.2)] flex items-center justify-center cursor-grab"
               style={{ left: `${getPercent(pendingMin)}%` }}
             >
-              <div className="w-3.5 h-3.5 bg-blue-600 rounded-full" />
+              <div className="w-3.5 h-3.5 bg-brand-600 rounded-full" />
             </div>
 
             {/* Max handle */}
             <div
-              className="absolute top-1/2 -translate-y-1/2 translate-x-1/2 w-7 h-7 bg-white rounded-full shadow-[0_2px_10px_rgba(0,0,0,0.2)] flex items-center justify-center cursor-grab"
+              className="absolute top-1/2 -translate-y-1/2 translate-x-1/2 w-7 h-7 bg-cream rounded-full shadow-[0_2px_10px_rgba(0,0,0,0.2)] flex items-center justify-center cursor-grab"
               style={{ right: `${100 - getPercent(pendingMax)}%` }}
             >
-              <div className="w-3.5 h-3.5 bg-blue-600 rounded-full" />
+              <div className="w-3.5 h-3.5 bg-brand-600 rounded-full" />
             </div>
           </div>
         </div>
@@ -267,7 +267,7 @@ function FilterSidebar({
         {/* Min/Max inputs */}
         <div className="flex items-center gap-3">
           <div className="flex-1">
-            <p className="font-sans font-semibold text-[10px] tracking-wider uppercase text-slate-400 mb-1">MIN (₹)</p>
+            <p className="font-sans font-semibold text-[10px] tracking-wider uppercase text-ink-400 mb-1">MIN (₹)</p>
             <input
               type="number"
               aria-label="Minimum price"
@@ -275,12 +275,12 @@ function FilterSidebar({
               min={0}
               max={pendingMax - 1}
               onChange={(e) => onMinChange(Math.min(Number(e.target.value), pendingMax - 1))}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-center font-bold text-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full bg-cream border border-ink-200 rounded-lg px-4 py-3 text-center font-bold text-lg text-ink-900 focus:outline-none focus:ring-2 focus:ring-brand-500"
             />
           </div>
-          <span className="text-slate-400 mt-5 font-bold">—</span>
+          <span className="text-ink-400 mt-5 font-bold">—</span>
           <div className="flex-1">
-            <p className="font-sans font-semibold text-[10px] tracking-wider uppercase text-slate-400 mb-1">MAX (₹)</p>
+            <p className="font-sans font-semibold text-[10px] tracking-wider uppercase text-ink-400 mb-1">MAX (₹)</p>
             <input
               type="number"
               aria-label="Maximum price"
@@ -288,7 +288,7 @@ function FilterSidebar({
               min={pendingMin + 1}
               max={PRICE_MAX}
               onChange={(e) => onMaxChange(Math.max(Number(e.target.value), pendingMin + 1))}
-              className="w-full bg-white border border-slate-200 rounded-lg px-4 py-3 text-center font-bold text-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full bg-cream border border-ink-200 rounded-lg px-4 py-3 text-center font-bold text-lg text-ink-900 focus:outline-none focus:ring-2 focus:ring-brand-500"
             />
           </div>
         </div>
@@ -296,7 +296,7 @@ function FilterSidebar({
         {/* Apply */}
         <button
           onClick={onApply}
-          className="mt-4 w-full bg-slate-900 text-white py-4 rounded-xl font-bold text-sm tracking-[0.15em] uppercase hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 motion-reduce:transition-none"
+          className="mt-4 w-full bg-ink-900 text-white py-4 rounded-xl font-bold text-sm tracking-[0.15em] uppercase hover:bg-ink-800 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 motion-reduce:transition-none"
         >
           APPLY FILTER
         </button>
@@ -317,11 +317,11 @@ function Pagination({ currentPage, totalPages, onPageChange }: { currentPage: nu
 
   return (
     <div className="flex justify-center mt-12 mb-4">
-      <div className="flex items-center border border-slate-200 rounded overflow-hidden">
+      <div className="flex items-center border border-ink-200 rounded overflow-hidden">
         <button
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="px-4 py-2 font-sans text-sm text-slate-500 bg-slate-100 hover:bg-slate-200 disabled:opacity-50 disabled:cursor-not-allowed border-r border-slate-200 transition-colors"
+          className="px-4 py-2 font-sans text-sm text-ink-500 bg-ink-100 hover:bg-ink-200 disabled:opacity-50 disabled:cursor-not-allowed border-r border-ink-200 transition-colors"
         >
           Previous
         </button>
@@ -329,9 +329,9 @@ function Pagination({ currentPage, totalPages, onPageChange }: { currentPage: nu
           <button
             key={p}
             onClick={() => onPageChange(p)}
-            className={`px-4 py-2 font-sans text-sm border-r border-slate-200 transition-colors ${currentPage === p
-              ? "bg-blue-600 text-white"
-              : "bg-white text-blue-500 hover:bg-slate-50"
+            className={`px-4 py-2 font-sans text-sm border-r border-ink-200 transition-colors ${currentPage === p
+              ? "bg-brand-600 text-white"
+              : "bg-cream text-brand-500 hover:bg-ink-50"
               }`}
           >
             {p}
@@ -340,7 +340,7 @@ function Pagination({ currentPage, totalPages, onPageChange }: { currentPage: nu
         <button
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="px-4 py-2 font-sans text-sm bg-white text-blue-500 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+          className="px-4 py-2 font-sans text-sm bg-cream text-brand-500 hover:bg-ink-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
         >
           Next
         </button>
@@ -512,11 +512,11 @@ function ProductsContent() {
   };
 
   return (
-    <div className="min-h-screen bg-white pt-30">
+    <div className="min-h-screen bg-cream pt-30">
       <div className="flex min-h-[calc(100vh-5rem)]">
 
         {/* ── Desktop Sidebar ─────────────────────────────────────── */}
-        <aside className="hidden lg:block w-72 xl:w-80 bg-slate-50 border-r border-slate-200 sticky top-20 h-[calc(100vh-5rem)] overflow-y-auto shrink-0">
+        <aside className="hidden lg:block w-72 xl:w-80 bg-ink-50 border-r border-ink-200 sticky top-20 h-[calc(100vh-5rem)] overflow-y-auto shrink-0">
           <FilterSidebar {...sidebarProps} />
         </aside>
 
@@ -528,13 +528,13 @@ function ProductsContent() {
               onClick={() => setDrawerOpen(false)}
               aria-hidden="true"
             />
-            <div className="fixed inset-y-0 left-0 z-50 w-80 max-w-full bg-white overflow-y-auto lg:hidden shadow-2xl">
+            <div className="fixed inset-y-0 left-0 z-50 w-80 max-w-full bg-cream overflow-y-auto lg:hidden shadow-2xl">
               <div className="flex items-center justify-between px-6 pt-6 pb-2">
-                <span className="font-bold text-xl uppercase tracking-wider text-slate-900">Filters</span>
+                <span className="font-bold text-xl uppercase tracking-wider text-ink-900">Filters</span>
                 <button
                   onClick={() => setDrawerOpen(false)}
                   aria-label="Close filters"
-                  className="p-2 rounded-full hover:bg-slate-100 transition-colors"
+                  className="p-2 rounded-full hover:bg-ink-100 transition-colors"
                 >
                   <X size={20} />
                 </button>
@@ -549,17 +549,17 @@ function ProductsContent() {
           {/* Mobile Back to Home */}
           <Link
             href="/"
-            className="md:hidden inline-flex items-center gap-2 text-slate-700 hover:text-slate-900 mb-5 transition-colors text-sm font-semibold bg-white border border-slate-200 px-5 py-2.5 rounded-full shadow-sm"
+            className="md:hidden inline-flex items-center gap-2 text-ink-700 hover:text-ink-900 mb-5 transition-colors text-sm font-semibold bg-cream border border-ink-200 px-5 py-2.5 rounded-full shadow-sm"
           >
             <ChevronLeft size={16} />
             Back to Home
           </Link>
 
           {/* Collection Banner */}
-          <div className="relative w-full aspect-[16/9] md:aspect-[21/9] lg:aspect-[24/9] rounded-2xl overflow-hidden mb-8 bg-blue-50/50">
+          <div className="relative w-full aspect-[16/9] md:aspect-[21/9] lg:aspect-[24/9] rounded-2xl overflow-hidden mb-8 bg-brand-50/50">
             <Image
               src="/images/shop-banner.png"
-              alt="HEEDY Moisturizing Brightening Sunscreen"
+              alt="CHOOSEME Handcrafted Soap Collection"
               fill
               priority
               className="object-cover object-center"
@@ -567,25 +567,25 @@ function ProductsContent() {
           </div>
 
           {/* Results Bar + Mobile Filter Toggle */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-white border border-slate-100 rounded-xl px-5 py-4 mb-6 gap-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-cream border border-ink-100 rounded-xl px-5 py-4 mb-6 gap-4">
             <div>
-              <p className="font-sans text-base text-slate-600">
+              <p className="font-sans text-base text-ink-600">
                 Showing{" "}
-                <span className="font-bold text-slate-900">{filtered.length}</span>
+                <span className="font-bold text-ink-900">{filtered.length}</span>
                 {" "}of{" "}
-                <span className="font-bold text-slate-900">{products.length}</span>
+                <span className="font-bold text-ink-900">{products.length}</span>
                 {" "}Products
               </p>
               {searchTerm && (
-                <p className="font-sans text-sm text-slate-500 mt-1">
-                  Search results for: <span className="font-bold text-slate-900">&quot;{searchTerm}&quot;</span>
-                  <button onClick={() => setSearchTerm("")} className="ml-3 text-blue-500 hover:underline text-xs">Clear search</button>
+                <p className="font-sans text-sm text-ink-500 mt-1">
+                  Search results for: <span className="font-bold text-ink-900">&quot;{searchTerm}&quot;</span>
+                  <button onClick={() => setSearchTerm("")} className="ml-3 text-brand-500 hover:underline text-xs">Clear search</button>
                 </p>
               )}
             </div>
             <button
               onClick={() => setDrawerOpen(true)}
-              className="lg:hidden flex items-center gap-2 font-sans font-bold text-sm text-slate-700 border border-slate-200 rounded-xl px-4 py-2 hover:bg-slate-50 transition-colors"
+              className="lg:hidden flex items-center gap-2 font-sans font-bold text-sm text-ink-700 border border-ink-200 rounded-xl px-4 py-2 hover:bg-ink-50 transition-colors"
             >
               <SlidersHorizontal size={16} />
               Filters
@@ -595,7 +595,7 @@ function ProductsContent() {
           {/* Product Grid */}
           {loading ? (
             <div className="flex items-center justify-center py-24">
-              <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-slate-900"></div>
+              <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-ink-900"></div>
             </div>
           ) : filtered.length > 0 ? (
             <>
@@ -616,13 +616,13 @@ function ProductsContent() {
           ) : (
             <div className="flex flex-col items-center justify-center py-24 text-center">
               <p className="text-4xl mb-4">🔍</p>
-              <h3 className="font-serif text-2xl text-slate-900 mb-2">No products found</h3>
-              <p className="font-sans text-base text-slate-500 mb-6">
+              <h3 className="font-serif text-2xl text-ink-900 mb-2">No products found</h3>
+              <p className="font-sans text-base text-ink-500 mb-6">
                 Try adjusting your filters or clearing them to see all products.
               </p>
               <button
                 onClick={handleClear}
-                className="bg-slate-900 text-white font-bold text-sm uppercase tracking-widest px-8 py-3 rounded-full hover:bg-slate-800 transition-colors"
+                className="bg-ink-900 text-white font-bold text-sm uppercase tracking-widest px-8 py-3 rounded-full hover:bg-ink-800 transition-colors"
               >
                 CLEAR FILTERS
               </button>
@@ -639,8 +639,8 @@ function ProductsContent() {
 export default function ProductsPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-white pt-20 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-slate-900"></div>
+      <div className="min-h-screen bg-cream pt-20 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-ink-900"></div>
       </div>
     }>
       <ProductsContent />

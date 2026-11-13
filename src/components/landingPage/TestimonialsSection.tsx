@@ -18,7 +18,7 @@ const renderStars = (rating: number) =>
   Array.from({ length: 5 }, (_, i) => (
     <Star
       key={i}
-      className={`w-4 h-4 ${i < rating ? "text-blue-400 fill-blue-400" : "text-slate-700 fill-slate-700"}`}
+      className={`w-4 h-4 ${i < rating ? "text-brand-400 fill-brand-400" : "text-ink-700 fill-ink-700"}`}
     />
   ));
 
@@ -47,7 +47,7 @@ function TestimonialCard({ testimonial, isVisible, index }: { testimonial: Testi
       </div>
 
       {/* Quote Text */}
-      <p className="font-serif font-normal text-lg md:text-xl italic text-slate-300 leading-relaxed mb-8 flex-grow text-left break-words line-clamp-6">
+      <p className="font-serif font-normal text-lg md:text-xl italic text-ink-300 leading-relaxed mb-8 flex-grow text-left break-words line-clamp-6">
         &ldquo;{testimonial.quote}&rdquo;
       </p>
 
@@ -65,7 +65,7 @@ function TestimonialCard({ testimonial, isVisible, index }: { testimonial: Testi
           />
         ) : (
           <div
-            className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-400 flex items-center justify-center flex-shrink-0"
+            className="w-12 h-12 rounded-full bg-gradient-to-br from-brand-500 to-brand-400 flex items-center justify-center flex-shrink-0"
             aria-label={`${testimonial.name} profile picture`}
           >
             <span className="text-white font-bold text-lg uppercase">{testimonial.initial}</span>
@@ -76,7 +76,7 @@ function TestimonialCard({ testimonial, isVisible, index }: { testimonial: Testi
           <p className="font-sans font-bold text-sm tracking-[0.1em] uppercase text-white">
             {testimonial.name}
           </p>
-          <p className="font-sans font-semibold text-xs tracking-[0.15em] uppercase text-slate-500 mt-0.5">
+          <p className="font-sans font-semibold text-xs tracking-[0.15em] uppercase text-ink-500 mt-0.5">
             {testimonial.role}
           </p>
         </div>
@@ -145,13 +145,13 @@ export default function TestimonialsSection() {
   if (!loading && testimonials.length === 0) return null;
 
   return (
-    <section ref={sectionRef} className="bg-[#0A1E3D] w-full py-12 md:py-20 lg:py-24 overflow-hidden">
+    <section ref={sectionRef} className="bg-brand-950 w-full py-12 md:py-20 lg:py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
 
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-20">
           <p
-            className={`font-sans font-semibold text-xs tracking-[0.25em] uppercase text-blue-300 mb-4 transition-opacity duration-400 ease-out motion-reduce:transition-none ${isVisible ? "opacity-100" : "opacity-0"
+            className={`font-sans font-semibold text-xs tracking-[0.25em] uppercase text-brand-300 mb-4 transition-opacity duration-400 ease-out motion-reduce:transition-none ${isVisible ? "opacity-100" : "opacity-0"
               }`}
           >
             CLIENTELE VOICES
@@ -161,7 +161,7 @@ export default function TestimonialsSection() {
               }`}
             style={{ transitionDelay: "100ms" }}
           >
-            Voices of Excellence
+            Loved in Every Lather
           </h2>
         </div>
 

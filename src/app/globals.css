@@ -1,8 +1,38 @@
 @import "tailwindcss";
 
+/* Chooseme palette, sampled from the logo. Change colours here. */
+@theme {
+  --color-brand-50: #edfbf2;
+  --color-brand-100: #d3f5df;
+  --color-brand-200: #a8ebc2;
+  --color-brand-300: #6fdc9d;
+  --color-brand-400: #22bf6a;
+  --color-brand-500: #009a47;
+  --color-brand-600: #00823c;
+  --color-brand-700: #006f35;
+  --color-brand-800: #00562a;
+  --color-brand-900: #003f20;
+  --color-brand-950: #002412;
+
+  --color-ink-50: #f5f8f6;
+  --color-ink-100: #e9efeb;
+  --color-ink-200: #d9e2dc;
+  --color-ink-300: #bccac2;
+  --color-ink-400: #8a9d92;
+  --color-ink-500: #61756a;
+  --color-ink-600: #47594e;
+  --color-ink-700: #34453b;
+  --color-ink-800: #1f3028;
+  --color-ink-900: #11231a;
+  --color-ink-950: #07160f;
+
+  --color-cream: #f4ebdc;
+}
+
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f4ebdc;
+  --foreground: #11231a;
 }
 
 @theme inline {

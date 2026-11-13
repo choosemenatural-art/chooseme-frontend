@@ -34,7 +34,7 @@ export default function CheckoutPage() {
   useEffect(() => {
     const fetchAddresses = async () => {
       try {
-        const userStr = localStorage.getItem("heedy_user");
+        const userStr = localStorage.getItem("chooseme_user");
         if (!userStr) return;
         const { token } = JSON.parse(userStr);
         if (!token) return;
@@ -79,7 +79,7 @@ export default function CheckoutPage() {
     setIsSavingAddress(true);
 
     try {
-      const userStr = localStorage.getItem("heedy_user");
+      const userStr = localStorage.getItem("chooseme_user");
       if (!userStr) {
         showToast("Please login to save your address.", "warning");
         setIsSavingAddress(false);
@@ -185,7 +185,7 @@ export default function CheckoutPage() {
     }
 
     try {
-      const userStr = localStorage.getItem("heedy_user");
+      const userStr = localStorage.getItem("chooseme_user");
       if (!userStr) {
         showToast("Please login to proceed.", "warning");
         return;
@@ -264,7 +264,7 @@ export default function CheckoutPage() {
         key: key_id || process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "rzp_test_YourTestKey", // Use backend key first to guarantee match
         amount: razorpayOrder.amount,
         currency: razorpayOrder.currency,
-        name: "Heedy",
+        name: "Chooseme",
         description: "Order Payment",
         order_id: razorpayOrder.id,
         handler: async function (response: any) {
@@ -305,7 +305,7 @@ export default function CheckoutPage() {
           contact: "9999999999"
         },
         theme: {
-          color: "#0A192F"
+          color: "#003f20"
         }
       };
 
@@ -324,20 +324,20 @@ export default function CheckoutPage() {
 
   if (isVerifyingPayment) {
     return (
-      <div className="min-h-screen bg-[#FAFAFA] flex flex-col items-center justify-center">
-        <div className="w-16 h-16 border-4 border-slate-200 border-t-[#0A192F] rounded-full animate-spin mb-6"></div>
-        <h2 className="font-sans font-bold text-2xl text-slate-900 mb-2">Verifying Payment</h2>
-        <p className="text-slate-500">Please wait while we confirm your order. Do not close this window.</p>
+      <div className="min-h-screen bg-ink-50 flex flex-col items-center justify-center">
+        <div className="w-16 h-16 border-4 border-ink-200 border-t-brand-900 rounded-full animate-spin mb-6"></div>
+        <h2 className="font-sans font-bold text-2xl text-ink-900 mb-2">Verifying Payment</h2>
+        <p className="text-ink-500">Please wait while we confirm your order. Do not close this window.</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#FAFAFA] pt-24 pb-16">
+    <div className="min-h-screen bg-ink-50 pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 pt-8">
 
         {/* Main Title */}
-        <h1 className="font-sans font-bold text-3xl md:text-4xl text-slate-900 mb-12">
+        <h1 className="font-sans font-bold text-3xl md:text-4xl text-ink-900 mb-12">
           Secure Checkout
         </h1>
 
@@ -349,10 +349,10 @@ export default function CheckoutPage() {
             {/* Step 1: SHIPPING DESTINATION */}
             <div className="flex flex-col gap-6">
               <div className="flex items-start gap-4">
-                <div className="w-8 h-8 rounded-full bg-[#0A192F] text-white flex items-center justify-center text-sm font-bold flex-shrink-0 mt-1">
+                <div className="w-8 h-8 rounded-full bg-brand-900 text-white flex items-center justify-center text-sm font-bold flex-shrink-0 mt-1">
                   1
                 </div>
-                <h2 className="font-sans font-black text-4xl lg:text-5xl text-[#0A192F] uppercase tracking-tight text-left w-full leading-[1.1]">
+                <h2 className="font-sans font-black text-4xl lg:text-5xl text-brand-900 uppercase tracking-tight text-left w-full leading-[1.1]">
                   Shipping<br />Destination
                 </h2>
               </div>
@@ -364,19 +364,19 @@ export default function CheckoutPage() {
                     <button
                       key={addr.id}
                       onClick={() => setSelectedAddressId(addr.id)}
-                      className={`relative border rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 w-full max-w-sm bg-white text-left transition-colors ${isSelected ? "border-slate-300" : "border-slate-200 hover:border-slate-300"
+                      className={`relative border rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 w-full max-w-sm bg-cream text-left transition-colors ${isSelected ? "border-ink-300" : "border-ink-200 hover:border-ink-300"
                         }`}
                     >
                       {isSelected && (
-                        <div className="absolute -top-3 right-8 w-6 h-6 bg-[#0A192F] text-white rounded-full flex items-center justify-center border-4 border-white box-content">
+                        <div className="absolute -top-3 right-8 w-6 h-6 bg-brand-900 text-white rounded-full flex items-center justify-center border-4 border-cream box-content">
                           <Check size={12} strokeWidth={4} />
                         </div>
                       )}
                       <div className="flex items-start gap-3">
-                        <MapPin size={20} className="text-slate-500 flex-shrink-0 mt-1" />
+                        <MapPin size={20} className="text-ink-500 flex-shrink-0 mt-1" />
                         <div>
-                          <p className="font-sans font-bold text-slate-900 mb-2">{addr.name}</p>
-                          <p className="font-sans text-slate-500 leading-relaxed text-sm">
+                          <p className="font-sans font-bold text-ink-900 mb-2">{addr.name}</p>
+                          <p className="font-sans text-ink-500 leading-relaxed text-sm">
                             {addr.line1}<br />
                             {addr.line2}
                           </p>
@@ -389,7 +389,7 @@ export default function CheckoutPage() {
                 {/* New Address Button */}
                 <button
                   onClick={() => setIsAddressModalOpen(true)}
-                  className="border border-slate-200 rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 w-full sm:w-40 flex flex-col items-center justify-center gap-2 bg-white hover:bg-slate-50 transition-colors text-slate-900 font-bold text-sm"
+                  className="border border-ink-200 rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 w-full sm:w-40 flex flex-col items-center justify-center gap-2 bg-cream hover:bg-ink-50 transition-colors text-ink-900 font-bold text-sm"
                 >
                   <span className="text-xl font-normal">+</span>
                   <span className="text-center">New<br />Address</span>
@@ -397,15 +397,15 @@ export default function CheckoutPage() {
               </div>
             </div>
 
-            <div className="h-px bg-slate-200 w-full ml-0 sm:ml-12" />
+            <div className="h-px bg-ink-200 w-full ml-0 sm:ml-12" />
 
             {/* Step 2: PROMOTION CODE */}
             <div className="flex flex-col gap-6">
               <div className="flex items-center gap-4">
-                <div className="w-8 h-8 rounded-full bg-[#0A192F] text-white flex items-center justify-center text-sm font-bold flex-shrink-0">
+                <div className="w-8 h-8 rounded-full bg-brand-900 text-white flex items-center justify-center text-sm font-bold flex-shrink-0">
                   2
                 </div>
-                <h2 className="font-sans font-bold text-xl text-[#0A192F] uppercase tracking-wider">
+                <h2 className="font-sans font-bold text-xl text-brand-900 uppercase tracking-wider">
                   Promotion Code
                 </h2>
               </div>
@@ -417,42 +417,42 @@ export default function CheckoutPage() {
                     value={promoCode}
                     onChange={(e) => setPromoCode(e.target.value)}
                     placeholder="Enter gift card or discount code"
-                    className="flex-1 border border-slate-200 rounded-xl px-5 py-4 text-base focus:outline-none focus:ring-2 focus:ring-[#0A192F] bg-white placeholder:text-slate-400"
+                    className="flex-1 border border-ink-200 rounded-xl px-5 py-4 text-base focus:outline-none focus:ring-2 focus:ring-brand-900 bg-cream placeholder:text-ink-400"
                   />
                   <button
                     onClick={handleApplyPromo}
                     disabled={isApplyingPromo}
-                    className="bg-[#111] text-white font-bold text-sm px-10 py-4 rounded-xl hover:bg-black transition-colors shrink-0 disabled:opacity-50"
+                    className="bg-brand-950 text-white font-bold text-sm px-10 py-4 rounded-xl hover:bg-brand-900 transition-colors shrink-0 disabled:opacity-50"
                   >
                     {isApplyingPromo ? "Applying..." : "Apply"}
                   </button>
                 </div>
                 {promoMessage && (
-                  <p className={`text-sm mt-1 font-medium ${promoMessage.type === 'error' ? 'text-red-500' : 'text-green-600'}`}>
+                  <p className={`text-sm mt-1 font-medium ${promoMessage.type === 'error' ? 'text-red-500' : 'text-brand-600'}`}>
                     {promoMessage.text}
                   </p>
                 )}
               </div>
             </div>
 
-            {/* <div className="h-px bg-slate-200 w-full ml-0 sm:ml-2" /> */}
+            {/* <div className="h-px bg-ink-200 w-full ml-0 sm:ml-2" /> */}
 
 
 
           </div>
 
           {/* ── Right Column (Order Bag) ── */}
-          <div className="lg:col-span-4 bg-white p-8 rounded-3xl shadow-sm border border-slate-100 sticky top-32">
-            <h2 className="font-sans font-bold text-xl text-slate-900 mb-8">Order Bag</h2>
+          <div className="lg:col-span-4 bg-cream p-8 rounded-3xl shadow-sm border border-ink-100 sticky top-32">
+            <h2 className="font-sans font-bold text-xl text-ink-900 mb-8">Order Bag</h2>
 
             {/* Cart Items List */}
             <div className="flex flex-col gap-6 mb-8 max-h-[400px] overflow-y-auto pr-2">
               {cartItems.length === 0 ? (
-                <p className="text-slate-500 font-sans text-sm">Your order bag is empty.</p>
+                <p className="text-ink-500 font-sans text-sm">Your order bag is empty.</p>
               ) : (
                 cartItems.map((item) => (
                   <div key={item.id} className="flex gap-4">
-                    <div className="relative w-16 h-20 bg-slate-50 rounded-lg overflow-hidden flex-shrink-0 border border-slate-100">
+                    <div className="relative w-16 h-20 bg-ink-50 rounded-lg overflow-hidden flex-shrink-0 border border-ink-100">
                       <Image
                         src={item.image}
                         alt={item.name}
@@ -460,22 +460,22 @@ export default function CheckoutPage() {
                         sizes="64px"
                         className="object-cover"
                       />
-                      <div className="absolute top-0 right-0 bg-[#0A192F] text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-bl-lg">
+                      <div className="absolute top-0 right-0 bg-brand-900 text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-bl-lg">
                         {item.quantity}
                       </div>
                     </div>
                     <div className="flex flex-col flex-1">
-                      <h3 className="font-sans font-bold text-sm text-slate-900 leading-snug line-clamp-2 pr-4">
+                      <h3 className="font-sans font-bold text-sm text-ink-900 leading-snug line-clamp-2 pr-4">
                         {item.name}
                       </h3>
                       {item.size && (
-                        <p className="font-sans text-xs text-slate-500 mt-1">
+                        <p className="font-sans text-xs text-ink-500 mt-1">
                           {item.size}
                         </p>
                       )}
                     </div>
                     <div className="text-right flex-shrink-0">
-                      <p className="font-sans font-bold text-sm text-slate-900">
+                      <p className="font-sans font-bold text-sm text-ink-900">
                         {item.currency}{item.price * item.quantity}
                       </p>
                     </div>
@@ -485,39 +485,39 @@ export default function CheckoutPage() {
             </div>
 
             <div className="space-y-4 mb-6">
-              <div className="flex justify-between items-center text-slate-500 font-sans text-sm">
+              <div className="flex justify-between items-center text-ink-500 font-sans text-sm">
                 <span>Subtotal</span>
-                <span className="text-slate-900">₹{subtotal.toFixed(2)}</span>
+                <span className="text-ink-900">₹{subtotal.toFixed(2)}</span>
               </div>
               {discountAmount > 0 && (
-                <div className="flex justify-between items-center text-green-600 font-sans text-sm">
+                <div className="flex justify-between items-center text-brand-600 font-sans text-sm">
                   <span>Discount</span>
                   <span>-₹{discountAmount.toFixed(2)}</span>
                 </div>
               )}
-              <div className="flex justify-between items-center text-slate-500 font-sans text-sm">
+              <div className="flex justify-between items-center text-ink-500 font-sans text-sm">
                 <span>Shipping</span>
                 <span>
-                  <span className="text-green-600 font-bold tracking-wide">Free</span>
+                  <span className="text-brand-600 font-bold tracking-wide">Free</span>
                 </span>
               </div>
             </div>
 
-            <div className="h-px border-t border-dashed border-slate-200 mb-6" />
+            <div className="h-px border-t border-dashed border-ink-200 mb-6" />
 
             <div className="flex justify-between items-end mb-8">
-              <span className="font-sans font-bold text-lg text-slate-900">Total</span>
-              <span className="font-sans font-black text-2xl text-slate-900">₹{total.toFixed(2)}</span>
+              <span className="font-sans font-bold text-lg text-ink-900">Total</span>
+              <span className="font-sans font-black text-2xl text-ink-900">₹{total.toFixed(2)}</span>
             </div>
 
             <button
               onClick={handleCheckout}
-              className="w-full bg-[#111] text-white font-bold text-base py-4 sm:py-5 rounded-xl hover:bg-black transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 mb-4"
+              className="w-full bg-brand-950 text-white font-bold text-base py-4 sm:py-5 rounded-xl hover:bg-brand-900 transition-colors focus:outline-none focus:ring-2 focus:ring-ink-400 focus:ring-offset-2 mb-4"
             >
               Secure Checkout
             </button>
 
-            <div className="flex items-center justify-center gap-2 text-slate-400">
+            <div className="flex items-center justify-center gap-2 text-ink-400">
               <ShieldCheck size={14} />
               <p className="font-sans text-[10px] uppercase tracking-widest">
                 256-bit SSL Secured Connection
@@ -532,18 +532,18 @@ export default function CheckoutPage() {
       {isAddressModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div
-            className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"
+            className="absolute inset-0 bg-ink-900/40 backdrop-blur-sm"
             onClick={() => setIsAddressModalOpen(false)}
           />
-          <div className="relative bg-white rounded-[2rem] w-full max-w-lg shadow-xl flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+          <div className="relative bg-cream rounded-[2rem] w-full max-w-lg shadow-xl flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             {/* Header */}
-            <div className="flex items-center justify-between p-6 sm:p-8 border-b border-slate-100">
-              <h2 className="font-sans font-black text-2xl text-slate-900 tracking-tight">
+            <div className="flex items-center justify-between p-6 sm:p-8 border-b border-ink-100">
+              <h2 className="font-sans font-black text-2xl text-ink-900 tracking-tight">
                 New Shipping Address
               </h2>
               <button
                 onClick={() => setIsAddressModalOpen(false)}
-                className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 transition-colors focus:outline-none"
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-ink-100 text-ink-500 hover:bg-ink-200 transition-colors focus:outline-none"
               >
                 <X size={16} />
               </button>
@@ -552,37 +552,37 @@ export default function CheckoutPage() {
             {/* Form */}
             <div className="p-6 sm:p-8 flex flex-col gap-5">
               <div>
-                <label className="block font-sans font-bold text-sm text-slate-700 mb-2">Street Address</label>
+                <label className="block font-sans font-bold text-sm text-ink-700 mb-2">Street Address</label>
                 <input
                   type="text"
                   value={newAddressForm.street}
                   onChange={(e) => { setNewAddressForm({ ...newAddressForm, street: e.target.value }); setAddressErrors(prev => ({ ...prev, street: '' })); }}
                   placeholder="e.g. 123 Luxury Lane"
-                  className={`w-full border rounded-xl px-4 py-3 text-base text-slate-900 focus:outline-none focus:border-[#0A192F] placeholder:text-slate-400 ${addressErrors.street ? 'border-red-400 ring-1 ring-red-400' : 'border-slate-200'}`}
+                  className={`w-full border rounded-xl px-4 py-3 text-base text-ink-900 focus:outline-none focus:border-brand-900 placeholder:text-ink-400 ${addressErrors.street ? 'border-red-400 ring-1 ring-red-400' : 'border-ink-200'}`}
                 />
                 {addressErrors.street && <p className="text-red-500 text-xs mt-1.5 font-medium">{addressErrors.street}</p>}
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="block font-sans font-bold text-sm text-slate-700 mb-2">City <span className="text-red-500">*</span></label>
+                  <label className="block font-sans font-bold text-sm text-ink-700 mb-2">City <span className="text-red-500">*</span></label>
                   <input
                     type="text"
                     value={newAddressForm.city}
                     onChange={(e) => { setNewAddressForm({ ...newAddressForm, city: e.target.value }); setAddressErrors(prev => ({ ...prev, city: '' })); }}
                     placeholder="Mumbai"
-                    className={`w-full border rounded-xl px-4 py-3 text-base text-slate-900 focus:outline-none focus:border-[#0A192F] placeholder:text-slate-400 ${addressErrors.city ? 'border-red-400 ring-1 ring-red-400' : 'border-slate-200'}`}
+                    className={`w-full border rounded-xl px-4 py-3 text-base text-ink-900 focus:outline-none focus:border-brand-900 placeholder:text-ink-400 ${addressErrors.city ? 'border-red-400 ring-1 ring-red-400' : 'border-ink-200'}`}
                   />
                   {addressErrors.city && <p className="text-red-500 text-xs mt-1.5 font-medium">{addressErrors.city}</p>}
                 </div>
                 <div>
-                  <label className="block font-sans font-bold text-sm text-slate-700 mb-2">State <span className="text-red-500">*</span></label>
+                  <label className="block font-sans font-bold text-sm text-ink-700 mb-2">State <span className="text-red-500">*</span></label>
                   <input
                     type="text"
                     value={newAddressForm.state}
                     onChange={(e) => { setNewAddressForm({ ...newAddressForm, state: e.target.value }); setAddressErrors(prev => ({ ...prev, state: '' })); }}
                     placeholder="Maharashtra"
-                    className={`w-full border rounded-xl px-4 py-3 text-base text-slate-900 focus:outline-none focus:border-[#0A192F] placeholder:text-slate-400 ${addressErrors.state ? 'border-red-400 ring-1 ring-red-400' : 'border-slate-200'}`}
+                    className={`w-full border rounded-xl px-4 py-3 text-base text-ink-900 focus:outline-none focus:border-brand-900 placeholder:text-ink-400 ${addressErrors.state ? 'border-red-400 ring-1 ring-red-400' : 'border-ink-200'}`}
                   />
                   {addressErrors.state && <p className="text-red-500 text-xs mt-1.5 font-medium">{addressErrors.state}</p>}
                 </div>
@@ -590,24 +590,24 @@ export default function CheckoutPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="block font-sans font-bold text-sm text-slate-700 mb-2">ZIP Code <span className="text-red-500">*</span></label>
+                  <label className="block font-sans font-bold text-sm text-ink-700 mb-2">ZIP Code <span className="text-red-500">*</span></label>
                   <input
                     type="text"
                     value={newAddressForm.zip}
                     onChange={(e) => { setNewAddressForm({ ...newAddressForm, zip: e.target.value }); setAddressErrors(prev => ({ ...prev, zip: '' })); }}
                     placeholder="123456"
-                    className={`w-full border rounded-xl px-4 py-3 text-base text-slate-900 focus:outline-none focus:border-[#0A192F] placeholder:text-slate-400 ${addressErrors.zip ? 'border-red-400 ring-1 ring-red-400' : 'border-slate-200'}`}
+                    className={`w-full border rounded-xl px-4 py-3 text-base text-ink-900 focus:outline-none focus:border-brand-900 placeholder:text-ink-400 ${addressErrors.zip ? 'border-red-400 ring-1 ring-red-400' : 'border-ink-200'}`}
                   />
                   {addressErrors.zip && <p className="text-red-500 text-xs mt-1.5 font-medium">{addressErrors.zip}</p>}
                 </div>
                 <div>
-                  <label className="block font-sans font-bold text-sm text-slate-700 mb-2">Country</label>
+                  <label className="block font-sans font-bold text-sm text-ink-700 mb-2">Country</label>
                   <input
                     type="text"
                     value={newAddressForm.country}
                     onChange={(e) => setNewAddressForm({ ...newAddressForm, country: e.target.value })}
                     placeholder="India"
-                    className="w-full border border-slate-200 rounded-xl px-4 py-3 text-base text-slate-900 focus:outline-none focus:border-[#0A192F] placeholder:text-slate-400"
+                    className="w-full border border-ink-200 rounded-xl px-4 py-3 text-base text-ink-900 focus:outline-none focus:border-brand-900 placeholder:text-ink-400"
                   />
                 </div>
               </div>
@@ -615,7 +615,7 @@ export default function CheckoutPage() {
               <button
                 onClick={handleSaveAddress}
                 disabled={isSavingAddress}
-                className="w-full bg-[#111] text-white font-bold text-base py-4 rounded-xl mt-4 hover:bg-black transition-colors focus:outline-none disabled:opacity-50"
+                className="w-full bg-brand-950 text-white font-bold text-base py-4 rounded-xl mt-4 hover:bg-brand-900 transition-colors focus:outline-none disabled:opacity-50"
               >
                 {isSavingAddress ? "Saving..." : "Save & Deliver Here"}
               </button>

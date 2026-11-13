@@ -12,32 +12,32 @@ interface Feature {
 
 const features: Feature[] = [
   {
-    id: "micro-zinc-shield",
+    id: "natural-oils",
     step: "01",
-    category: "TECHNOLOGY",
-    title: "Micro-Zinc Shield",
-    description: "Ultra-fine mineral protection that forms a lightweight barrier against harmful UV rays without clogging pores or leaving a white cast."
+    category: "INGREDIENTS",
+    title: "Natural Oil Blend",
+    description: "Made with nourishing plant oils like coconut and olive that cleanse gently without stripping your skin of its natural moisture."
   },
   {
-    id: "hydration-lock",
+    id: "rich-lather",
     step: "02",
-    category: "HYDRATION",
-    title: "Hydration Lock System",
-    description: "Infused with Hyaluronic Acid and Ceramides to deeply hydrate and strengthen your skin barrier, keeping moisture locked in all day."
+    category: "LATHER",
+    title: "Rich, Creamy Lather",
+    description: "A dense, creamy foam that lifts away dirt and sweat, leaving your skin soft, clean and refreshed after every wash."
   },
   {
-    id: "photo-stable",
+    id: "long-lasting",
     step: "03",
-    category: "EFFICACY",
-    title: "Photo-Stable Formula",
-    description: "Engineered to remain stable under sunlight, ensuring long-lasting protection and consistent performance without breaking down."
+    category: "QUALITY",
+    title: "Long-Lasting Bars",
+    description: "Carefully cured to make every bar harder and longer-lasting, so it stays firm and fresh wash after wash."
   },
   {
     id: "clean-conscious",
     step: "04",
     category: "ETHICS",
     title: "Clean & Conscious",
-    description: "Made with skin-safe, cruelty-free, and environmentally responsible ingredients that care for you and the planet."
+    description: "Made with skin-safe, cruelty-free, and environmentally responsible ingredients, wrapped in planet-friendly packaging."
   }
 ];
 
@@ -64,26 +64,26 @@ export default function FeaturesSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-white w-full pt-16 md:pt-24 lg:pt-32 pb-8 md:pb-12 lg:pb-16">
+    <section ref={sectionRef} className="bg-cream w-full pt-16 md:pt-24 lg:pt-32 pb-8 md:pb-12 lg:pb-16">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
         
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16 md:mb-20">
           <div className="lg:max-w-2xl">
             <p 
-              className={`font-sans font-bold text-xs tracking-[0.15em] uppercase text-blue-800 mb-3 transition-opacity duration-400 ease-out motion-reduce:transition-none ${
+              className={`font-sans font-bold text-xs tracking-[0.15em] uppercase text-brand-800 mb-3 transition-opacity duration-400 ease-out motion-reduce:transition-none ${
                 isVisible ? "opacity-100" : "opacity-0"
               }`}
             >
               SUPERIOR STANDARDS
             </p>
             <h2 
-              className={`font-serif font-normal text-4xl md:text-5xl lg:text-6xl text-slate-900 leading-tight transition-all duration-600 ease-out motion-reduce:transition-none motion-reduce:transform-none ${
+              className={`font-serif font-normal text-4xl md:text-5xl lg:text-6xl text-ink-900 leading-tight transition-all duration-600 ease-out motion-reduce:transition-none motion-reduce:transform-none ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
               style={{ transitionDelay: "100ms" }}
             >
-              Advanced Skin Defence
+              The Art of Clean
             </h2>
           </div>
           
@@ -93,8 +93,8 @@ export default function FeaturesSection() {
             }`}
             style={{ transitionDelay: "200ms" }}
           >
-            <p className="font-sans font-normal text-base md:text-lg text-slate-400 leading-relaxed">
-              Every drop of HEEDY is crafted with powerful actives to protect, nourish, and elevate your skin in modern environments.
+            <p className="font-sans font-normal text-base md:text-lg text-ink-400 leading-relaxed">
+              Every bar of CHOOSEME is crafted with pure, natural ingredients to cleanse, nourish, and refresh your skin every day.
             </p>
           </div>
         </div>
@@ -107,12 +107,12 @@ export default function FeaturesSection() {
                 key={feature.id}
                 className={`group relative p-6 md:p-8 rounded-2xl cursor-default transition-all duration-300 ease-out motion-reduce:transition-none motion-reduce:transform-none ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                } border border-transparent bg-transparent hover:border-slate-200 hover:bg-white hover:shadow-sm`}
+                } border border-transparent bg-transparent hover:border-ink-200 hover:bg-cream hover:shadow-sm`}
                 style={{ transitionDelay: `${300 + index * 100}ms` }}
               >
                 {/* Step Number */}
                 <div 
-                  className="font-serif font-normal text-6xl md:text-7xl lg:text-8xl mb-4 md:mb-6 select-none transition-colors duration-300 text-slate-200 group-hover:text-blue-100/60"
+                  className="font-serif font-normal text-6xl md:text-7xl lg:text-8xl mb-4 md:mb-6 select-none transition-colors duration-300 text-ink-200 group-hover:text-brand-100/60"
                   aria-hidden="true"
                 >
                   {feature.step}
@@ -121,7 +121,7 @@ export default function FeaturesSection() {
                 {/* Category Tag */}
                 <div className="mb-4">
                   <span 
-                    className="inline-block px-3 py-1.5 rounded-full font-sans font-semibold text-[10px] md:text-xs tracking-[0.15em] uppercase transition-colors duration-200 bg-slate-100 text-slate-600 group-hover:bg-blue-100 group-hover:text-blue-800"
+                    className="inline-block px-3 py-1.5 rounded-full font-sans font-semibold text-[10px] md:text-xs tracking-[0.15em] uppercase transition-colors duration-200 bg-ink-100 text-ink-600 group-hover:bg-brand-100 group-hover:text-brand-800"
                     aria-label={`Feature category: ${feature.category}`}
                   >
                     {feature.category}
@@ -129,17 +129,17 @@ export default function FeaturesSection() {
                 </div>
 
                 {/* Feature Title */}
-                <h3 className="font-serif font-normal text-xl md:text-2xl text-slate-900 mb-3">
+                <h3 className="font-serif font-normal text-xl md:text-2xl text-ink-900 mb-3">
                   {feature.title}
                 </h3>
 
                 {/* Feature Description */}
-                <p className="font-sans font-normal text-sm md:text-base text-slate-500 leading-relaxed">
+                <p className="font-sans font-normal text-sm md:text-base text-ink-500 leading-relaxed">
                   {feature.description}
                 </p>
 
                 {/* Hover Bottom Accent */}
-                <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-blue-500 rounded-t-md opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="absolute bottom-0 left-6 right-6 h-0.5 bg-brand-500 rounded-t-md opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </article>
             );
           })}

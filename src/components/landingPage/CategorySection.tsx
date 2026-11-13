@@ -10,19 +10,19 @@ const DEFAULT_CATEGORIES = [
     id: 'skin-care',
     label: 'Skin Care',
     image: '/images/skin-care.jpg',
-    alt: 'Skin Care category featuring moisturizing brightening sunscreen'
+    alt: 'Skin Care category featuring gentle cleansing soaps'
   },
   {
     id: 'lip-care',
     label: 'Lip Care',
     image: '/images/lip-care.jpg',
-    alt: 'Lip Care category featuring nourished glossy lips'
+    alt: 'Lip Care category featuring nourishing natural care'
   },
   {
     id: 'body-care',
     label: 'Body Care',
     image: '/images/body-care.jpg',
-    alt: 'Body Care category featuring luxurious body cream application'
+    alt: 'Body Care category featuring luxurious bath soaps'
   }
 ];
 
@@ -121,33 +121,33 @@ export default function CategorySection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-white pt-12 md:pt-20 lg:pt-24 w-full">
+    <section ref={sectionRef} className="bg-cream pt-12 md:pt-20 lg:pt-24 w-full">
       {/* Section Header */}
       <div className="text-center px-6 md:px-12 max-w-4xl mx-auto mb-8 md:mb-16">
         <p
-          className={`font-sans font-semibold text-xs tracking-[0.3em] uppercase text-blue-800 mb-4 transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] motion-reduce:transition-none motion-reduce:transform-none ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          className={`font-sans font-semibold text-xs tracking-[0.3em] uppercase text-brand-800 mb-4 transition-all duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)] motion-reduce:transition-none motion-reduce:transform-none ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
         >
-          THE CURATED SELECTION
+          THE SOAP COLLECTION
         </p>
         <h2
-          className={`font-serif font-normal text-4xl md:text-5xl lg:text-7xl text-slate-900 leading-tight mb-6 transition-all duration-700 delay-100 ease-[cubic-bezier(0.25,0.1,0.25,1)] motion-reduce:transition-none motion-reduce:transform-none ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          className={`font-serif font-normal text-4xl md:text-5xl lg:text-7xl text-ink-900 leading-tight mb-6 transition-all duration-700 delay-100 ease-[cubic-bezier(0.25,0.1,0.25,1)] motion-reduce:transition-none motion-reduce:transform-none ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
         >
-          Sensory Categories
+          Find Your Bar
         </h2>
         <p
-          className={`font-sans font-normal text-lg md:text-xl text-slate-500 leading-relaxed max-w-3xl mx-auto transition-all duration-700 delay-200 ease-[cubic-bezier(0.25,0.1,0.25,1)] motion-reduce:transition-none motion-reduce:transform-none ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          className={`font-sans font-normal text-lg md:text-xl text-ink-500 leading-relaxed max-w-3xl mx-auto transition-all duration-700 delay-200 ease-[cubic-bezier(0.25,0.1,0.25,1)] motion-reduce:transition-none motion-reduce:transform-none ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
         >
-          Explore our world of high-performance luxury cosmetics, where science meets sensory indulgence.
+          Explore our handcrafted soaps, where pure ingredients meet a rich, indulgent lather.
         </p>
       </div>
 
       {/* Category Grid with Names Below */}
       <div
         ref={scrollRef}
-        className="w-full flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-0 md:gap-1 px-0 md:px-6 pb-4 border-b border-gray-100 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="w-full flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-0 md:gap-1 px-0 md:px-6 pb-4 border-b border-ink-100 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {categories.map((category, index) => (
           <div key={category.id} className="w-full flex-shrink-0 snap-center flex flex-col md:w-auto md:flex-shrink md:snap-align-none px-6 md:px-0 py-4 md:py-0">
@@ -155,7 +155,7 @@ export default function CategorySection() {
             <Link
               href={`/products?category=${category.id}`}
               aria-label={`Browse ${category.label}`}
-              className={`md:hidden group relative overflow-hidden rounded-[2.5rem] aspect-[4/5] block focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-700 ease-out motion-reduce:transition-none motion-reduce:transform-none shadow-xl shadow-black/10 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+              className={`md:hidden group relative overflow-hidden rounded-[2.5rem] aspect-[4/5] block focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 transition-all duration-700 ease-out motion-reduce:transition-none motion-reduce:transform-none shadow-xl shadow-black/10 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
                 }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
@@ -187,7 +187,7 @@ export default function CategorySection() {
             <Link
               href={`/products?category=${category.id}`}
               aria-label={`Browse ${category.label}`}
-              className={`hidden md:block group relative overflow-hidden aspect-square lg:aspect-[4/3] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-700 ease-out motion-reduce:transition-none motion-reduce:transform-none ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+              className={`hidden md:block group relative overflow-hidden aspect-square lg:aspect-[4/3] focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 transition-all duration-700 ease-out motion-reduce:transition-none motion-reduce:transform-none ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
                 }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
@@ -199,14 +199,14 @@ export default function CategorySection() {
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className="object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors duration-500 motion-reduce:transition-none" />
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-brand-900/30 transition-colors duration-500 motion-reduce:transition-none" />
 
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="relative overflow-hidden py-2">
                   <h3 className="font-serif font-normal text-3xl md:text-4xl lg:text-5xl text-white tracking-wide">
                     {category.label}
                   </h3>
-                  <span className="absolute bottom-0 left-1/2 w-0 h-[1px] bg-white transition-all duration-500 ease-out group-hover:w-full group-hover:left-0" />
+                  <span className="absolute bottom-0 left-1/2 w-0 h-[1px] bg-cream transition-all duration-500 ease-out group-hover:w-full group-hover:left-0" />
                 </div>
               </div>
             </Link>
@@ -216,7 +216,7 @@ export default function CategorySection() {
                 }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <Link href={`/products?category=${category.id}`} className="font-sans font-bold text-xs tracking-[0.2em] uppercase text-slate-400 hover:text-blue-600 transition-colors duration-300">
+              <Link href={`/products?category=${category.id}`} className="font-sans font-bold text-xs tracking-[0.2em] uppercase text-ink-400 hover:text-brand-600 transition-colors duration-300">
                 {category.label}
               </Link>
             </div>
@@ -239,7 +239,7 @@ export default function CategorySection() {
                 currentIndexRef.current = index;
               }
             }}
-            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${activeIndex === index ? 'bg-blue-300 w-4' : 'bg-blue-100/80'
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${activeIndex === index ? 'bg-brand-300 w-4' : 'bg-brand-100/80'
               }`}
             aria-label={`Go to slide ${index + 1}`}
           />

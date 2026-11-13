@@ -27,32 +27,32 @@ export default function ValueSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-[#0A1E3D] w-full py-16 md:py-24 lg:py-32 overflow-hidden">
+    <section ref={sectionRef} className="bg-brand-950 w-full py-16 md:py-24 lg:py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
 
           {/* Image Panel */}
           <div
-            className={`relative rounded-2xl lg:rounded-3xl overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900 border border-white/10 shadow-2xl shadow-black/20 aspect-[4/5] lg:aspect-square w-full transition-all duration-700 ease-out group motion-reduce:transition-none motion-reduce:transform-none ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-5"
+            className={`relative rounded-2xl lg:rounded-3xl overflow-hidden bg-gradient-to-br from-ink-800 to-ink-900 border border-white/10 shadow-2xl shadow-black/20 aspect-[4/5] lg:aspect-square w-full transition-all duration-700 ease-out group motion-reduce:transition-none motion-reduce:transform-none ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-5"
               }`}
           >
             <Image
               src="/images/value-image.png"
-              alt="Curology moisturizer product on geometric platform"
+              alt="CHOOSEME soap bar on geometric platform"
               fill
               priority
               className=" object-fill transition-transform duration-500 group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:transform-none"
               sizes="(max-width: 1024px) 80vw, 50vw"
             />
             {/* Subtle overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A1E3D]/30 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-950/30 to-transparent pointer-events-none" />
           </div>
 
           {/* Content Panel */}
           <div className="flex flex-col justify-center">
 
             <p
-              className={`font-sans font-semibold text-xs md:text-sm tracking-[0.25em] uppercase text-blue-300 mb-4 transition-all duration-700 ease-out motion-reduce:transition-none motion-reduce:transform-none ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-5"
+              className={`font-sans font-semibold text-xs md:text-sm tracking-[0.25em] uppercase text-brand-300 mb-4 transition-all duration-700 ease-out motion-reduce:transition-none motion-reduce:transform-none ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-5"
                 }`}
               style={{ transitionDelay: "300ms" }}
             >
@@ -71,11 +71,11 @@ export default function ValueSection() {
             </h2>
 
             <p
-              className={`font-sans font-normal text-base md:text-lg text-slate-400 leading-relaxed max-w-lg mb-12 transition-all duration-700 ease-out motion-reduce:transition-none motion-reduce:transform-none ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-5"
+              className={`font-sans font-normal text-base md:text-lg text-ink-400 leading-relaxed max-w-lg mb-12 transition-all duration-700 ease-out motion-reduce:transition-none motion-reduce:transform-none ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-5"
                 }`}
               style={{ transitionDelay: "500ms" }}
             >
-              At HEEDY, we don&apos;t just create products. We create experiences that elevate your everyday lifestyle.
+              At CHOOSEME, we don&apos;t just create products. We create soaps that turn your everyday bath into a ritual.
             </p>
 
             {/* Feature Grid */}
@@ -90,7 +90,7 @@ export default function ValueSection() {
                 <h3 className="font-sans font-bold text-sm md:text-base tracking-[0.15em] uppercase text-white mb-3">
                   PREMIUM QUALITY
                 </h3>
-                <p className="font-sans font-normal text-xs md:text-sm tracking-wide uppercase text-slate-500 leading-relaxed">
+                <p className="font-sans font-normal text-xs md:text-sm tracking-wide uppercase text-ink-500 leading-relaxed">
                   CAREFULLY SELECTED INGREDIENTS WITH STRICT QUALITY STANDARDS FOR TOP-TIER PERFORMANCE.
                 </p>
               </div>
@@ -102,9 +102,9 @@ export default function ValueSection() {
                 style={{ transitionDelay: "700ms" }}
               >
                 <h3 className="font-sans font-bold text-sm md:text-base tracking-[0.15em] uppercase text-white mb-3">
-                  SKIN-FRIENDLY FORMULA
+                  SKIN-FRIENDLY SOAPS
                 </h3>
-                <p className="font-sans font-normal text-xs md:text-sm tracking-wide uppercase text-slate-500 leading-relaxed">
+                <p className="font-sans font-normal text-xs md:text-sm tracking-wide uppercase text-ink-500 leading-relaxed">
                   GENTLE, EFFECTIVE, AND SUITED FOR DAILY USE — ESPECIALLY FOR INDIAN CONDITIONS.
                 </p>
               </div>
@@ -117,10 +117,10 @@ export default function ValueSection() {
                 style={{ transitionDelay: "800ms" }}
               >
                 <h3 className="font-sans font-bold text-sm md:text-base tracking-[0.15em] uppercase text-white mb-3">
-                  REAL RESULTS
+                  REAL FRESHNESS
                 </h3>
-                <p className="font-sans font-normal text-xs md:text-sm tracking-wide uppercase text-slate-500 leading-relaxed">
-                  VISIBLE AND CONSISTENT OUTCOMES — NO EMPTY PROMISES, JUST WHAT YOU SEE.
+                <p className="font-sans font-normal text-xs md:text-sm tracking-wide uppercase text-ink-500 leading-relaxed">
+                  SOFT, CLEAN, FRESH SKIN AFTER EVERY WASH — NO EMPTY PROMISES, JUST WHAT YOU FEEL.
                 </p>
               </div>
 
@@ -134,7 +134,7 @@ export default function ValueSection() {
                 <h3 className="font-sans font-bold text-sm md:text-base tracking-[0.15em] uppercase text-white mb-3">
                   BUILT FOR INDIA
                 </h3>
-                <p className="font-sans font-normal text-xs md:text-sm tracking-wide uppercase text-slate-500 leading-relaxed">
+                <p className="font-sans font-normal text-xs md:text-sm tracking-wide uppercase text-ink-500 leading-relaxed">
                   GLOBAL QUALITY, ACCESSIBLE AND RELATABLE — A BRAND WITH PURPOSE AND VISION.
                 </p>
               </div>
@@ -145,7 +145,7 @@ export default function ValueSection() {
             <Link
               href="/process"
               aria-label="Discover our scientific process and product development"
-              className={`mt-10 self-center md:self-start bg-white text-[#0A1E3D] px-8 md:px-10 py-4 md:py-5 rounded-full font-sans font-bold text-xs md:text-sm tracking-[0.2em] uppercase hover:bg-slate-100 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-[#0A1E3D] motion-reduce:transition-none motion-reduce:transform-none ${
+              className={`mt-10 self-center md:self-start bg-cream text-brand-950 px-8 md:px-10 py-4 md:py-5 rounded-full font-sans font-bold text-xs md:text-sm tracking-[0.2em] uppercase hover:bg-ink-100 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:ring-offset-brand-950 motion-reduce:transition-none motion-reduce:transform-none ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
               style={{ transitionDelay: "1000ms" }}

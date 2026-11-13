@@ -64,7 +64,7 @@ export default function ProfilePage() {
           if (res.data.success) {
             const userData = { ...res.data.data, token: urlToken };
             setUser(userData);
-            localStorage.setItem("heedy_user", JSON.stringify(userData));
+            localStorage.setItem("chooseme_user", JSON.stringify(userData));
 
             // Clean up the URL to remove the token without reloading the page
             window.history.replaceState({}, document.title, window.location.pathname);
@@ -78,7 +78,7 @@ export default function ProfilePage() {
       }
 
       // Load user from localStorage
-      const savedUser = localStorage.getItem("heedy_user");
+      const savedUser = localStorage.getItem("chooseme_user");
       if (savedUser) {
         setUser(JSON.parse(savedUser));
       } else {
@@ -220,8 +220,8 @@ export default function ProfilePage() {
   };
 
   const handleSignOut = () => {
-    localStorage.removeItem("heedy_user");
-    localStorage.removeItem("heedy_cart");
+    localStorage.removeItem("chooseme_user");
+    localStorage.removeItem("chooseme_cart");
     clearCart();
     // Also might want to call backend logout to clear HTTP-only cookie if there's an endpoint
     // For now, clear local state and redirect
@@ -265,7 +265,7 @@ export default function ProfilePage() {
       if (res.data.success) {
         const updatedUser = { ...user, ...res.data.data, token: user.token };
         setUser(updatedUser);
-        localStorage.setItem("heedy_user", JSON.stringify(updatedUser));
+        localStorage.setItem("chooseme_user", JSON.stringify(updatedUser));
         setIsEditProfileOpen(false);
         showToast("Profile updated successfully", "success");
       }
@@ -279,8 +279,8 @@ export default function ProfilePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center pt-20">
-        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-slate-900"></div>
+      <div className="min-h-screen bg-cream flex items-center justify-center pt-20">
+        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-ink-900"></div>
       </div>
     );
   }
@@ -293,33 +293,33 @@ export default function ProfilePage() {
     : "U";
 
   return (
-    <div className="min-h-screen bg-[#F8F9FB] pt-20 flex justify-center">
-      <div className="max-w-[1200px] w-full flex flex-col md:flex-row bg-white min-h-[calc(100vh-5rem)]">
+    <div className="min-h-screen bg-ink-50 pt-20 flex justify-center">
+      <div className="max-w-[1200px] w-full flex flex-col md:flex-row bg-cream min-h-[calc(100vh-5rem)]">
 
         {/* ── Sidebar ── */}
-        <aside className="w-full md:w-72 border-r border-slate-100 flex flex-col shrink-0">
+        <aside className="w-full md:w-72 border-r border-ink-100 flex flex-col shrink-0">
           {/* User Profile Info */}
-          <div className="p-8 flex flex-col items-center border-b border-slate-100">
-            <div className="w-24 h-24 rounded-[32px] bg-blue-600 text-white flex items-center justify-center text-4xl font-bold mb-4 shadow-lg shadow-blue-600/20">
+          <div className="p-8 flex flex-col items-center border-b border-ink-100">
+            <div className="w-24 h-24 rounded-[32px] bg-brand-600 text-white flex items-center justify-center text-4xl font-bold mb-4 shadow-lg shadow-brand-600/20">
               {initials}
             </div>
-            <div className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">
+            <div className="text-xs font-bold text-ink-500 uppercase tracking-widest mb-1">
               VIP
             </div>
-            <h2 className="text-lg font-bold text-slate-900 text-center mb-1 line-clamp-1">
+            <h2 className="text-lg font-bold text-ink-900 text-center mb-1 line-clamp-1">
               {user.name}
             </h2>
-            <p className={`text-xs text-slate-500 text-center truncate w-full ${!user.phone ? 'mb-4' : 'mb-1'}`}>
+            <p className={`text-xs text-ink-500 text-center truncate w-full ${!user.phone ? 'mb-4' : 'mb-1'}`}>
               {user.email}
             </p>
             {user.phone && (
-              <p className="text-xs text-slate-500 text-center truncate w-full mb-4">
+              <p className="text-xs text-ink-500 text-center truncate w-full mb-4">
                 {user.phone}
               </p>
             )}
             <button
               onClick={handleEditProfileClick}
-              className="text-xs font-bold text-blue-600 bg-blue-50 hover:bg-blue-100 px-4 py-2 rounded-full transition-colors"
+              className="text-xs font-bold text-brand-600 bg-brand-50 hover:bg-brand-100 px-4 py-2 rounded-full transition-colors"
             >
               Edit Profile
             </button>
@@ -330,8 +330,8 @@ export default function ProfilePage() {
             <button
               onClick={() => setActiveTab("overview")}
               className={`flex items-center gap-4 px-6 py-4 rounded-2xl font-bold text-sm transition-all ${activeTab === "overview"
-                ? "bg-blue-600 text-white shadow-md shadow-blue-600/20"
-                : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
+                ? "bg-brand-600 text-white shadow-md shadow-brand-600/20"
+                : "text-ink-500 hover:bg-ink-50 hover:text-ink-900"
                 }`}
             >
               <User size={18} />
@@ -340,8 +340,8 @@ export default function ProfilePage() {
             <button
               onClick={() => setActiveTab("orders")}
               className={`flex items-center gap-4 px-6 py-4 rounded-2xl font-bold text-sm transition-all ${activeTab === "orders"
-                ? "bg-blue-600 text-white shadow-md shadow-blue-600/20"
-                : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
+                ? "bg-brand-600 text-white shadow-md shadow-brand-600/20"
+                : "text-ink-500 hover:bg-ink-50 hover:text-ink-900"
                 }`}
             >
               <Package size={18} />
@@ -350,8 +350,8 @@ export default function ProfilePage() {
             <button
               onClick={() => setActiveTab("addresses")}
               className={`flex items-center gap-4 px-6 py-4 rounded-2xl font-bold text-sm transition-all ${activeTab === "addresses"
-                ? "bg-blue-600 text-white shadow-md shadow-blue-600/20"
-                : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
+                ? "bg-brand-600 text-white shadow-md shadow-brand-600/20"
+                : "text-ink-500 hover:bg-ink-50 hover:text-ink-900"
                 }`}
             >
               <MapPin size={18} />
@@ -360,7 +360,7 @@ export default function ProfilePage() {
           </nav>
 
           {/* Sign Out Button */}
-          <div className="p-6 border-t border-slate-100">
+          <div className="p-6 border-t border-ink-100">
             <button
               onClick={handleSignOut}
               className="flex items-center gap-4 px-6 py-4 w-full rounded-2xl text-red-500 font-bold text-sm hover:bg-red-50 transition-colors"
@@ -372,17 +372,17 @@ export default function ProfilePage() {
         </aside>
 
         {/* ── Main Content ── */}
-        <main className="flex-1 p-8 md:p-12 lg:p-16 bg-[#F8F9FB]">
+        <main className="flex-1 p-8 md:p-12 lg:p-16 bg-ink-50">
           <div className="max-w-3xl">
             {activeTab === "overview" && (
               <>
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-12">
-                  <h1 className="font-serif text-4xl md:text-5xl text-slate-900 leading-tight">
+                  <h1 className="font-serif text-4xl md:text-5xl text-ink-900 leading-tight">
                     Account <br />
                     Overview
                   </h1>
-                  <p className="text-base text-slate-500 max-w-sm md:text-right pt-2 leading-relaxed">
+                  <p className="text-base text-ink-500 max-w-sm md:text-right pt-2 leading-relaxed">
                     Welcome back, {user.name.split(' ')[0]}. Here&apos;s what&apos;s happening with your account.
                   </p>
                 </div>
@@ -405,31 +405,31 @@ export default function ProfilePage() {
 
                 {/* Stats Cards */}
                 <div className="grid grid-cols-1 gap-6 mb-12">
-                  <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm">
-                    <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">
+                  <div className="bg-cream rounded-3xl p-8 border border-ink-100 shadow-sm">
+                    <p className="text-xs font-bold text-ink-400 uppercase tracking-widest mb-4">
                       TOTAL ORDERS
                     </p>
-                    <p className="font-sans font-bold text-4xl text-slate-900">{orders.length}</p>
+                    <p className="font-sans font-bold text-4xl text-ink-900">{orders.length}</p>
                   </div>
                 </div>
 
                 {/* Recent Activity */}
                 <div>
-                  <p className="text-sm font-medium text-slate-700 mb-6">Recent Activity</p>
+                  <p className="text-sm font-medium text-ink-700 mb-6">Recent Activity</p>
                   {orders.length > 0 ? (
                     <div className="flex flex-col gap-4">
                       {orders.slice(0, 3).map((order) => (
-                        <div key={order._id} className="flex items-center justify-between p-4 bg-white border border-slate-100 rounded-xl shadow-sm">
+                        <div key={order._id} className="flex items-center justify-between p-4 bg-cream border border-ink-100 rounded-xl shadow-sm">
                           <div>
-                            <p className="font-bold text-sm text-slate-900">Order #{order._id.substring(0, 8)}</p>
-                            <p className="text-xs text-slate-500 mt-1">{`${String(new Date(order.createdAt).getDate()).padStart(2, '0')}/${String(new Date(order.createdAt).getMonth() + 1).padStart(2, '0')}/${new Date(order.createdAt).getFullYear()}`}</p>
+                            <p className="font-bold text-sm text-ink-900">Order #{order._id.substring(0, 8)}</p>
+                            <p className="text-xs text-ink-500 mt-1">{`${String(new Date(order.createdAt).getDate()).padStart(2, '0')}/${String(new Date(order.createdAt).getMonth() + 1).padStart(2, '0')}/${new Date(order.createdAt).getFullYear()}`}</p>
                           </div>
                           <div className="text-right">
-                            <p className="font-bold text-sm text-slate-900">₹{order.total}</p>
-                            <span className={`inline-block mt-1 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider ${order.orderStatus === 'delivered' ? 'bg-green-100 text-green-700' :
+                            <p className="font-bold text-sm text-ink-900">₹{order.total}</p>
+                            <span className={`inline-block mt-1 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider ${order.orderStatus === 'delivered' ? 'bg-brand-100 text-brand-700' :
                               order.orderStatus === 'cancelled' ? 'bg-red-100 text-red-700' :
-                                order.orderStatus === 'processing' ? 'bg-blue-100 text-blue-700' :
-                                  'bg-slate-100 text-slate-700'
+                                order.orderStatus === 'processing' ? 'bg-brand-100 text-brand-700' :
+                                  'bg-ink-100 text-ink-700'
                               }`}>
                               {order.orderStatus}
                             </span>
@@ -438,7 +438,7 @@ export default function ProfilePage() {
                       ))}
                     </div>
                   ) : (
-                    <div className="text-sm text-slate-600">No recent orders found.</div>
+                    <div className="text-sm text-ink-600">No recent orders found.</div>
                   )}
                 </div>
               </>
@@ -446,7 +446,7 @@ export default function ProfilePage() {
 
             {activeTab === "orders" && (
               <div>
-                <h1 className="font-serif text-4xl text-slate-900 leading-tight mb-8">My Orders</h1>
+                <h1 className="font-serif text-4xl text-ink-900 leading-tight mb-8">My Orders</h1>
 
                 {orders.length > 0 ? (
                   <div className="flex flex-col gap-6">
@@ -457,25 +457,25 @@ export default function ProfilePage() {
                       if (!aIsDone && bIsDone) return -1;
                       return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
                     }).map((order) => (
-                      <div key={order._id} className={`bg-white rounded-[2rem] border border-slate-100 shadow-sm overflow-hidden ${(order.orderStatus === 'delivered' || order.orderStatus === 'cancelled') ? 'opacity-80' : ''}`}>
-                        <div className="bg-slate-50 border-b border-slate-100 p-6 sm:px-8 flex flex-wrap items-center justify-between gap-4">
+                      <div key={order._id} className={`bg-cream rounded-[2rem] border border-ink-100 shadow-sm overflow-hidden ${(order.orderStatus === 'delivered' || order.orderStatus === 'cancelled') ? 'opacity-80' : ''}`}>
+                        <div className="bg-ink-50 border-b border-ink-100 p-6 sm:px-8 flex flex-wrap items-center justify-between gap-4">
                           <div>
-                            <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Order Placed</p>
-                            <p className="text-sm font-bold text-slate-900">{`${String(new Date(order.createdAt).getDate()).padStart(2, '0')}/${String(new Date(order.createdAt).getMonth() + 1).padStart(2, '0')}/${new Date(order.createdAt).getFullYear()}`}</p>
+                            <p className="text-xs font-bold text-ink-500 uppercase tracking-widest mb-1">Order Placed</p>
+                            <p className="text-sm font-bold text-ink-900">{`${String(new Date(order.createdAt).getDate()).padStart(2, '0')}/${String(new Date(order.createdAt).getMonth() + 1).padStart(2, '0')}/${new Date(order.createdAt).getFullYear()}`}</p>
                           </div>
                           <div>
-                            <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Total Amount</p>
-                            <p className="text-sm font-bold text-slate-900">₹{order.total}</p>
+                            <p className="text-xs font-bold text-ink-500 uppercase tracking-widest mb-1">Total Amount</p>
+                            <p className="text-sm font-bold text-ink-900">₹{order.total}</p>
                           </div>
                           <div>
-                            <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Order ID</p>
-                            <p className="text-sm font-bold text-slate-900">#{order._id.substring(0, 8)}</p>
+                            <p className="text-xs font-bold text-ink-500 uppercase tracking-widest mb-1">Order ID</p>
+                            <p className="text-sm font-bold text-ink-900">#{order._id.substring(0, 8)}</p>
                           </div>
                           <div className="flex-1 text-right min-w-[100px]">
-                            <span className={`inline-block text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider ${order.orderStatus === 'delivered' ? 'bg-green-100 text-green-700' :
+                            <span className={`inline-block text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider ${order.orderStatus === 'delivered' ? 'bg-brand-100 text-brand-700' :
                               order.orderStatus === 'cancelled' ? 'bg-red-100 text-red-700' :
-                                order.orderStatus === 'processing' ? 'bg-blue-100 text-blue-700' :
-                                  'bg-slate-100 text-slate-700'
+                                order.orderStatus === 'processing' ? 'bg-brand-100 text-brand-700' :
+                                  'bg-ink-100 text-ink-700'
                               }`}>
                               {order.orderStatus}
                             </span>
@@ -484,17 +484,17 @@ export default function ProfilePage() {
                         <div className="p-6 sm:p-8">
                           <div className="flex flex-col gap-4">
                             {order.items.map((item: any, idx: number) => (
-                              <div key={idx} className="flex items-center gap-4 border-b border-slate-100 pb-4 last:border-0 last:pb-0">
-                                <div className="w-16 h-16 rounded-xl bg-slate-100 shrink-0 overflow-hidden">
+                              <div key={idx} className="flex items-center gap-4 border-b border-ink-100 pb-4 last:border-0 last:pb-0">
+                                <div className="w-16 h-16 rounded-xl bg-ink-100 shrink-0 overflow-hidden">
                                   {item.product?.images?.[0] ? (
                                     <img src={item.product.images[0]} alt={item.product?.name} className={`w-full h-full object-cover ${(order.orderStatus === 'delivered' || order.orderStatus === 'cancelled') ? 'grayscale' : ''}`} />
                                   ) : (
-                                    <div className="w-full h-full bg-slate-200" />
+                                    <div className="w-full h-full bg-ink-200" />
                                   )}
                                 </div>
                                 <div className="flex-1">
-                                  <h4 className="font-bold text-sm text-slate-900">{item.product?.name || 'Product unavailable'}</h4>
-                                  <p className="text-xs text-slate-500 mt-1">Qty: {item.quantity} | Price: ₹{item.price}</p>
+                                  <h4 className="font-bold text-sm text-ink-900">{item.product?.name || 'Product unavailable'}</h4>
+                                  <p className="text-xs text-ink-500 mt-1">Qty: {item.quantity} | Price: ₹{item.price}</p>
                                 </div>
                               </div>
                             ))}
@@ -504,7 +504,7 @@ export default function ProfilePage() {
                     ))}
                   </div>
                 ) : (
-                  <p className="text-slate-500">You have no orders yet.</p>
+                  <p className="text-ink-500">You have no orders yet.</p>
                 )}
               </div>
             )}
@@ -512,19 +512,19 @@ export default function ProfilePage() {
             {activeTab === "addresses" && (
               <div className="flex flex-col">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
-                  <h1 className="font-serif text-4xl text-slate-900 leading-tight">
+                  <h1 className="font-serif text-4xl text-ink-900 leading-tight">
                     Shipping<br />Addresses
                   </h1>
-                  <p className="text-slate-500 text-sm max-w-xs text-left md:text-right pt-2">
+                  <p className="text-ink-500 text-sm max-w-xs text-left md:text-right pt-2">
                     Manage your delivery locations for a faster checkout.
                   </p>
                 </div>
 
                 <div className="grid grid-cols-1 gap-6">
                   {addresses.map((addr, idx) => (
-                    <div key={addr._id || idx} className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-sm relative">
-                      <h3 className="font-bold text-lg text-slate-900 mb-4">Address {idx + 1}</h3>
-                      <div className="text-slate-500 text-base leading-relaxed mb-6">
+                    <div key={addr._id || idx} className="bg-cream rounded-[2rem] p-8 border border-ink-100 shadow-sm relative">
+                      <h3 className="font-bold text-lg text-ink-900 mb-4">Address {idx + 1}</h3>
+                      <div className="text-ink-500 text-base leading-relaxed mb-6">
                         {addr.street && <p>{addr.street}</p>}
                         {addr.apartment && <p>{addr.apartment}</p>}
                         {addr.landmark && <p>Landmark: {addr.landmark}</p>}
@@ -546,7 +546,7 @@ export default function ProfilePage() {
                             setEditingAddressId(addr._id);
                             setIsAddressModalOpen(true);
                           }}
-                          className="text-blue-600 text-sm font-bold hover:underline"
+                          className="text-brand-600 text-sm font-bold hover:underline"
                         >
                           Edit Details
                         </button>
@@ -566,7 +566,7 @@ export default function ProfilePage() {
                       setEditingAddressId(null);
                       setIsAddressModalOpen(true);
                     }}
-                    className="border-2 border-dashed border-slate-200 rounded-[2rem] p-8 w-full flex items-center justify-center text-slate-500 hover:text-blue-600 hover:border-blue-300 hover:bg-blue-50 transition-all font-bold group"
+                    className="border-2 border-dashed border-ink-200 rounded-[2rem] p-8 w-full flex items-center justify-center text-ink-500 hover:text-brand-600 hover:border-brand-300 hover:bg-brand-50 transition-all font-bold group"
                   >
                     + Add New Shipping Location
                   </button>
@@ -581,17 +581,17 @@ export default function ProfilePage() {
       {isAddressModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div
-            className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"
+            className="absolute inset-0 bg-ink-900/40 backdrop-blur-sm"
             onClick={() => setIsAddressModalOpen(false)}
           />
-          <div className="relative bg-white rounded-[2rem] w-full max-w-lg shadow-xl flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200">
-            <div className="flex items-center justify-between p-6 sm:p-8 border-b border-slate-100">
-              <h2 className="font-sans font-black text-2xl text-slate-900 tracking-tight">
+          <div className="relative bg-cream rounded-[2rem] w-full max-w-lg shadow-xl flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+            <div className="flex items-center justify-between p-6 sm:p-8 border-b border-ink-100">
+              <h2 className="font-sans font-black text-2xl text-ink-900 tracking-tight">
                 {editingAddressId ? "Edit Shipping Address" : "New Shipping Address"}
               </h2>
               <button
                 onClick={() => setIsAddressModalOpen(false)}
-                className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 transition-colors focus:outline-none"
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-ink-100 text-ink-500 hover:bg-ink-200 transition-colors focus:outline-none"
               >
                 <X size={16} />
               </button>
@@ -599,60 +599,60 @@ export default function ProfilePage() {
 
             <div className="p-6 sm:p-8 flex flex-col gap-5">
               <div>
-                <label className="block font-sans font-bold text-sm text-slate-700 mb-2">Street Address</label>
+                <label className="block font-sans font-bold text-sm text-ink-700 mb-2">Street Address</label>
                 <input
                   type="text"
                   value={newAddressForm.street}
                   onChange={(e) => { setNewAddressForm({ ...newAddressForm, street: e.target.value }); setAddressErrors(prev => ({ ...prev, street: '' })); }}
                   placeholder="e.g. 123 Luxury Lane"
-                  className={`w-full border rounded-xl px-4 py-3 text-base text-slate-900 focus:outline-none focus:border-blue-500 placeholder:text-slate-400 ${addressErrors.street ? 'border-red-400 ring-1 ring-red-400' : 'border-slate-200'}`}
+                  className={`w-full border rounded-xl px-4 py-3 text-base text-ink-900 focus:outline-none focus:border-brand-500 placeholder:text-ink-400 ${addressErrors.street ? 'border-red-400 ring-1 ring-red-400' : 'border-ink-200'}`}
                 />
                 {addressErrors.street && <p className="text-red-500 text-xs mt-1.5 font-medium">{addressErrors.street}</p>}
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="block font-sans font-bold text-sm text-slate-700 mb-2">Apartment, suite, etc. <span className="text-slate-400 font-normal">(Optional)</span></label>
+                  <label className="block font-sans font-bold text-sm text-ink-700 mb-2">Apartment, suite, etc. <span className="text-ink-400 font-normal">(Optional)</span></label>
                   <input
                     type="text"
                     value={newAddressForm.apartment}
                     onChange={(e) => setNewAddressForm({ ...newAddressForm, apartment: e.target.value })}
                     placeholder="e.g. Apt 4B"
-                    className="w-full border border-slate-200 rounded-xl px-4 py-3 text-base text-slate-900 focus:outline-none focus:border-blue-500 placeholder:text-slate-400"
+                    className="w-full border border-ink-200 rounded-xl px-4 py-3 text-base text-ink-900 focus:outline-none focus:border-brand-500 placeholder:text-ink-400"
                   />
                 </div>
                 <div>
-                  <label className="block font-sans font-bold text-sm text-slate-700 mb-2">Landmark <span className="text-slate-400 font-normal">(Optional)</span></label>
+                  <label className="block font-sans font-bold text-sm text-ink-700 mb-2">Landmark <span className="text-ink-400 font-normal">(Optional)</span></label>
                   <input
                     type="text"
                     value={newAddressForm.landmark}
                     onChange={(e) => setNewAddressForm({ ...newAddressForm, landmark: e.target.value })}
                     placeholder="e.g. Near City Mall"
-                    className="w-full border border-slate-200 rounded-xl px-4 py-3 text-base text-slate-900 focus:outline-none focus:border-blue-500 placeholder:text-slate-400"
+                    className="w-full border border-ink-200 rounded-xl px-4 py-3 text-base text-ink-900 focus:outline-none focus:border-brand-500 placeholder:text-ink-400"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="block font-sans font-bold text-sm text-slate-700 mb-2">City <span className="text-red-500">*</span></label>
+                  <label className="block font-sans font-bold text-sm text-ink-700 mb-2">City <span className="text-red-500">*</span></label>
                   <input
                     type="text"
                     value={newAddressForm.city}
                     onChange={(e) => { setNewAddressForm({ ...newAddressForm, city: e.target.value }); setAddressErrors(prev => ({ ...prev, city: '' })); }}
                     placeholder="Mumbai"
-                    className={`w-full border rounded-xl px-4 py-3 text-base text-slate-900 focus:outline-none focus:border-blue-500 placeholder:text-slate-400 ${addressErrors.city ? 'border-red-400 ring-1 ring-red-400' : 'border-slate-200'}`}
+                    className={`w-full border rounded-xl px-4 py-3 text-base text-ink-900 focus:outline-none focus:border-brand-500 placeholder:text-ink-400 ${addressErrors.city ? 'border-red-400 ring-1 ring-red-400' : 'border-ink-200'}`}
                   />
                   {addressErrors.city && <p className="text-red-500 text-xs mt-1.5 font-medium">{addressErrors.city}</p>}
                 </div>
                 <div>
-                  <label className="block font-sans font-bold text-sm text-slate-700 mb-2">State <span className="text-red-500">*</span></label>
+                  <label className="block font-sans font-bold text-sm text-ink-700 mb-2">State <span className="text-red-500">*</span></label>
                   <input
                     type="text"
                     value={newAddressForm.state}
                     onChange={(e) => { setNewAddressForm({ ...newAddressForm, state: e.target.value }); setAddressErrors(prev => ({ ...prev, state: '' })); }}
                     placeholder="Maharashtra"
-                    className={`w-full border rounded-xl px-4 py-3 text-base text-slate-900 focus:outline-none focus:border-blue-500 placeholder:text-slate-400 ${addressErrors.state ? 'border-red-400 ring-1 ring-red-400' : 'border-slate-200'}`}
+                    className={`w-full border rounded-xl px-4 py-3 text-base text-ink-900 focus:outline-none focus:border-brand-500 placeholder:text-ink-400 ${addressErrors.state ? 'border-red-400 ring-1 ring-red-400' : 'border-ink-200'}`}
                   />
                   {addressErrors.state && <p className="text-red-500 text-xs mt-1.5 font-medium">{addressErrors.state}</p>}
                 </div>
@@ -660,24 +660,24 @@ export default function ProfilePage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="block font-sans font-bold text-sm text-slate-700 mb-2">ZIP Code <span className="text-red-500">*</span></label>
+                  <label className="block font-sans font-bold text-sm text-ink-700 mb-2">ZIP Code <span className="text-red-500">*</span></label>
                   <input
                     type="text"
                     value={newAddressForm.zip}
                     onChange={(e) => { setNewAddressForm({ ...newAddressForm, zip: e.target.value }); setAddressErrors(prev => ({ ...prev, zip: '' })); }}
                     placeholder="123456"
-                    className={`w-full border rounded-xl px-4 py-3 text-base text-slate-900 focus:outline-none focus:border-blue-500 placeholder:text-slate-400 ${addressErrors.zip ? 'border-red-400 ring-1 ring-red-400' : 'border-slate-200'}`}
+                    className={`w-full border rounded-xl px-4 py-3 text-base text-ink-900 focus:outline-none focus:border-brand-500 placeholder:text-ink-400 ${addressErrors.zip ? 'border-red-400 ring-1 ring-red-400' : 'border-ink-200'}`}
                   />
                   {addressErrors.zip && <p className="text-red-500 text-xs mt-1.5 font-medium">{addressErrors.zip}</p>}
                 </div>
                 <div>
-                  <label className="block font-sans font-bold text-sm text-slate-700 mb-2">Country</label>
+                  <label className="block font-sans font-bold text-sm text-ink-700 mb-2">Country</label>
                   <input
                     type="text"
                     value={newAddressForm.country}
                     onChange={(e) => setNewAddressForm({ ...newAddressForm, country: e.target.value })}
                     placeholder="India"
-                    className="w-full border border-slate-200 rounded-xl px-4 py-3 text-base text-slate-900 focus:outline-none focus:border-blue-500 placeholder:text-slate-400"
+                    className="w-full border border-ink-200 rounded-xl px-4 py-3 text-base text-ink-900 focus:outline-none focus:border-brand-500 placeholder:text-ink-400"
                   />
                 </div>
               </div>
@@ -685,7 +685,7 @@ export default function ProfilePage() {
               <button
                 onClick={handleSaveAddress}
                 disabled={isSavingAddress}
-                className="w-full bg-blue-600 text-white font-bold text-base py-4 rounded-xl mt-4 hover:bg-blue-700 transition-colors focus:outline-none disabled:opacity-50"
+                className="w-full bg-brand-600 text-white font-bold text-base py-4 rounded-xl mt-4 hover:bg-brand-700 transition-colors focus:outline-none disabled:opacity-50"
               >
                 {isSavingAddress ? "Saving..." : "Save Address"}
               </button>
@@ -698,19 +698,19 @@ export default function ProfilePage() {
       {deleteConfirmId && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div
-            className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"
+            className="absolute inset-0 bg-ink-900/40 backdrop-blur-sm"
             onClick={() => setDeleteConfirmId(null)}
           />
-          <div className="relative bg-white rounded-[2rem] w-full max-w-sm shadow-xl p-8 text-center">
+          <div className="relative bg-cream rounded-[2rem] w-full max-w-sm shadow-xl p-8 text-center">
             <div className="w-14 h-14 rounded-full bg-red-50 flex items-center justify-center mx-auto mb-5">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
             </div>
-            <h3 className="font-bold text-xl text-slate-900 mb-2">Remove Address?</h3>
-            <p className="text-sm text-slate-500 mb-8">This address will be permanently removed from your saved locations.</p>
+            <h3 className="font-bold text-xl text-ink-900 mb-2">Remove Address?</h3>
+            <p className="text-sm text-ink-500 mb-8">This address will be permanently removed from your saved locations.</p>
             <div className="flex gap-3">
               <button
                 onClick={() => setDeleteConfirmId(null)}
-                className="flex-1 py-3 rounded-xl border border-slate-200 text-slate-700 font-bold text-sm hover:bg-slate-50 transition-colors"
+                className="flex-1 py-3 rounded-xl border border-ink-200 text-ink-700 font-bold text-sm hover:bg-ink-50 transition-colors"
               >
                 Cancel
               </button>
@@ -732,17 +732,17 @@ export default function ProfilePage() {
       {isEditProfileOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div
-            className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"
+            className="absolute inset-0 bg-ink-900/40 backdrop-blur-sm"
             onClick={() => setIsEditProfileOpen(false)}
           />
-          <div className="relative bg-white rounded-[2rem] w-full max-w-md shadow-xl flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200">
-            <div className="flex items-center justify-between p-6 sm:p-8 border-b border-slate-100">
-              <h2 className="font-sans font-black text-2xl text-slate-900 tracking-tight">
+          <div className="relative bg-cream rounded-[2rem] w-full max-w-md shadow-xl flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+            <div className="flex items-center justify-between p-6 sm:p-8 border-b border-ink-100">
+              <h2 className="font-sans font-black text-2xl text-ink-900 tracking-tight">
                 Edit Profile
               </h2>
               <button
                 onClick={() => setIsEditProfileOpen(false)}
-                className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 transition-colors focus:outline-none"
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-ink-100 text-ink-500 hover:bg-ink-200 transition-colors focus:outline-none"
               >
                 <X size={16} />
               </button>
@@ -750,32 +750,32 @@ export default function ProfilePage() {
 
             <div className="p-6 sm:p-8 flex flex-col gap-6">
               <div>
-                <label className="block font-sans font-bold text-sm text-slate-700 mb-2">Full Name <span className="text-red-500">*</span></label>
+                <label className="block font-sans font-bold text-sm text-ink-700 mb-2">Full Name <span className="text-red-500">*</span></label>
                 <input
                   type="text"
                   value={editProfileForm.name}
                   onChange={(e) => setEditProfileForm({ ...editProfileForm, name: e.target.value })}
                   placeholder="Your Name"
-                  className="w-full border border-slate-200 rounded-xl px-4 py-3 text-base text-slate-900 focus:outline-none focus:border-blue-500 placeholder:text-slate-400"
+                  className="w-full border border-ink-200 rounded-xl px-4 py-3 text-base text-ink-900 focus:outline-none focus:border-brand-500 placeholder:text-ink-400"
                 />
               </div>
 
               <div>
-                <label className="block font-sans font-bold text-sm text-slate-700 mb-2">Phone Number</label>
+                <label className="block font-sans font-bold text-sm text-ink-700 mb-2">Phone Number</label>
                 <input
                   type="tel"
                   value={editProfileForm.phone}
                   onChange={(e) => setEditProfileForm({ ...editProfileForm, phone: e.target.value })}
                   placeholder="e.g. +91 9876543210"
-                  className="w-full border border-slate-200 rounded-xl px-4 py-3 text-base text-slate-900 focus:outline-none focus:border-blue-500 placeholder:text-slate-400"
+                  className="w-full border border-ink-200 rounded-xl px-4 py-3 text-base text-ink-900 focus:outline-none focus:border-brand-500 placeholder:text-ink-400"
                 />
-                <p className="text-[12px] text-slate-500 mt-2">Required for delivery and order updates.</p>
+                <p className="text-[12px] text-ink-500 mt-2">Required for delivery and order updates.</p>
               </div>
 
               <button
                 onClick={handleSaveProfile}
                 disabled={isSavingProfile}
-                className="w-full bg-blue-600 text-white font-bold text-base py-4 rounded-xl mt-2 hover:bg-blue-700 transition-colors focus:outline-none disabled:opacity-50"
+                className="w-full bg-brand-600 text-white font-bold text-base py-4 rounded-xl mt-2 hover:bg-brand-700 transition-colors focus:outline-none disabled:opacity-50"
               >
                 {isSavingProfile ? "Saving..." : "Save Changes"}
               </button>

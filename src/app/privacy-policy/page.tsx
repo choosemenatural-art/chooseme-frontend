@@ -14,19 +14,19 @@ export default function PrivacyPolicyPage() {
 
   return (
     <>
-      <title>Privacy Policy – HEEDY</title>
+      <title>Privacy Policy – CHOOSEME</title>
       <meta
         name="description"
-        content="Read the Privacy Policy of HEEDY. Learn how we collect, use, and protect your data."
+        content="Read the Privacy Policy of CHOOSEME. Learn how we collect, use, and protect your data."
       />
 
-      <main id="top" className="min-h-screen bg-slate-50">
+      <main id="top" className="min-h-screen bg-ink-50">
         {/* ── Hero ─────────────────────────────────────────────────── */}
         <section
           className="relative w-full pt-32 md:pt-40 pb-36 md:pb-48"
           style={{
             background:
-              "linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #1E40AF 100%)",
+              "linear-gradient(135deg, #002412 0%, #00562a 50%, #006f35 100%)",
           }}
         >
           <div className="max-w-4xl mx-auto px-6 text-center">
@@ -63,7 +63,7 @@ export default function PrivacyPolicyPage() {
 
             {/* Subheadline */}
             <p
-              className="text-slate-400 text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
+              className="text-ink-200 text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
               style={{
                 opacity: heroVisible ? 1 : 0,
                 transform: heroVisible ? "translateY(0)" : "translateY(1rem)",
@@ -71,7 +71,7 @@ export default function PrivacyPolicyPage() {
                   "opacity 0.6s ease 300ms, transform 0.6s ease 300ms",
               }}
             >
-              At HEEDY, we value your privacy. This policy explains how we collect and use your data.
+              At CHOOSEME, we value your privacy. This policy explains how we collect and use your data.
             </p>
           </div>
         </section>
@@ -80,12 +80,12 @@ export default function PrivacyPolicyPage() {
         <section
           className="relative z-10 px-6 md:px-12 lg:px-20 max-w-4xl mx-auto -mt-20 md:-mt-24 mb-20"
         >
-          <div className="bg-white rounded-3xl shadow-sm p-8 md:p-12 lg:p-16 border border-slate-100">
-            <p className="text-slate-500 mb-8 font-medium">Last Updated: May 2, 2026</p>
+          <div className="bg-cream rounded-3xl shadow-sm p-8 md:p-12 lg:p-16 border border-ink-100">
+            <p className="text-ink-500 mb-8 font-medium">Last Updated: May 2, 2026</p>
 
-            <div className="space-y-8 text-slate-700 leading-relaxed font-sans">
+            <div className="space-y-8 text-ink-700 leading-relaxed font-sans">
               <section>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">1. Information We Collect</h2>
+                <h2 className="text-2xl font-bold text-ink-900 mb-4">1. Information We Collect</h2>
                 <p className="mb-4">We may collect:</p>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>Name</li>
@@ -97,7 +97,7 @@ export default function PrivacyPolicyPage() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">2. How We Use Your Information</h2>
+                <h2 className="text-2xl font-bold text-ink-900 mb-4">2. How We Use Your Information</h2>
                 <p className="mb-4">We use your data to:</p>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>Process orders</li>
@@ -107,14 +107,14 @@ export default function PrivacyPolicyPage() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">3. Data Protection</h2>
+                <h2 className="text-2xl font-bold text-ink-900 mb-4">3. Data Protection</h2>
                 <p>
                   We implement secure measures to protect your personal data. Payment details are processed through trusted gateways.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">4. Sharing of Information</h2>
+                <h2 className="text-2xl font-bold text-ink-900 mb-4">4. Sharing of Information</h2>
                 <p className="mb-4">We do NOT sell your data. We may share it with:</p>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>Delivery partners</li>
@@ -123,14 +123,14 @@ export default function PrivacyPolicyPage() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">5. Cookies</h2>
+                <h2 className="text-2xl font-bold text-ink-900 mb-4">5. Cookies</h2>
                 <p>
                   We use cookies to improve user experience and website performance.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">6. Your Rights</h2>
+                <h2 className="text-2xl font-bold text-ink-900 mb-4">6. Your Rights</h2>
                 <p className="mb-4">You can:</p>
                 <ul className="list-disc pl-6 space-y-2">
                   <li>Request access to your data</li>
@@ -139,16 +139,16 @@ export default function PrivacyPolicyPage() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">7. Updates to Policy</h2>
+                <h2 className="text-2xl font-bold text-ink-900 mb-4">7. Updates to Policy</h2>
                 <p>
                   We may update this policy anytime. Changes will be posted on this page.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-slate-900 mb-4">8. Contact Us</h2>
-                <p className="mb-2">Email: <a href="mailto:infoheedy@gmail.com" className="text-blue-600 hover:text-blue-800 transition-colors">infoheedy@gmail.com</a></p>
-                <p>Phone: <a href="tel:+919074881551" className="text-blue-600 hover:text-blue-800 transition-colors">9074881551</a></p>
+                <h2 className="text-2xl font-bold text-ink-900 mb-4">8. Contact Us</h2>
+                <p className="mb-2">Email: <a href="mailto:choosemenatural@gmail.com" className="text-brand-600 hover:text-brand-800 transition-colors">choosemenatural@gmail.com</a></p>
+                <p>Phone: <a href="tel:+919074881551" className="text-brand-600 hover:text-brand-800 transition-colors">9074881551</a></p>
               </section>
             </div>
           </div>

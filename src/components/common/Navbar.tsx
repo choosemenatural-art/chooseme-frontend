@@ -71,12 +71,12 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    setIsLoggedIn(!!localStorage.getItem("heedy_user"));
+    setIsLoggedIn(!!localStorage.getItem("chooseme_user"));
   }, [pathname]);
 
   const handleLogout = () => {
-    localStorage.removeItem("heedy_user");
-    localStorage.removeItem("heedy_cart");
+    localStorage.removeItem("chooseme_user");
+    localStorage.removeItem("chooseme_cart");
     setIsLoggedIn(false);
     clearCart();
     router.push("/sign-in");
@@ -132,21 +132,21 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-24 lg:h-28 px-6 lg:px-12 flex items-center justify-between border-b ${scrolled ? "bg-white shadow-sm border-slate-200" : "bg-white border-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-24 lg:h-28 px-6 lg:px-12 flex items-center justify-between border-b ${scrolled ? "bg-cream shadow-sm border-ink-200" : "bg-cream border-transparent"
         }`}
     >
       {/* ── Mobile Menu Toggle & Profile (Left on Mobile) ── */}
       <div className="flex md:hidden flex-1 justify-start items-center gap-1 relative z-20 pointer-events-none">
         <button
           onClick={toggleMobileMenu}
-          className="p-2 -ml-2 text-slate-900 hover:text-blue-500 transition-colors duration-200 pointer-events-auto"
+          className="p-2 -ml-2 text-ink-900 hover:text-brand-500 transition-colors duration-200 pointer-events-auto"
           aria-label="Toggle mobile menu"
         >
           {isMobileMenuOpen ? <X size={24} strokeWidth={2} /> : <Menu size={24} strokeWidth={2} />}
         </button>
         <Link
           href={isLoggedIn ? "/profile" : "/sign-in"}
-          className="p-2 text-slate-900 hover:text-blue-500 transition-colors duration-200 pointer-events-auto"
+          className="p-2 text-ink-900 hover:text-brand-500 transition-colors duration-200 pointer-events-auto"
           aria-label="Account"
         >
           <User size={22} strokeWidth={2} />
@@ -155,11 +155,11 @@ export default function Navbar() {
 
       {/* ── Logo (Center on Mobile, Left on Desktop) ── */}
       <div className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 flex items-center z-10">
-        <Link href="/" className="flex-shrink-0" aria-label="HEEDY home">
+        <Link href="/" className="flex-shrink-0" aria-label="CHOOSEME home">
           <div className="relative w-56 sm:w-64 md:w-80 lg:w-96 h-20 lg:h-24">
             <Image
-              src="/logo.jpg"
-              alt="HEEDY Logo"
+              src="/logo-transparent.png"
+              alt="CHOOSEME Logo"
               fill
               sizes="(max-width: 640px) 224px, (max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
               className="object-contain md:object-left object-center"
@@ -173,13 +173,13 @@ export default function Navbar() {
       <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 lg:gap-12">
         <Link
           href="/products"
-          className="font-sans font-black text-base tracking-[0.15em] uppercase text-slate-900 hover:text-blue-500 transition-colors duration-200"
+          className="font-sans font-black text-base tracking-[0.15em] uppercase text-ink-900 hover:text-brand-500 transition-colors duration-200"
         >
           SHOP
         </Link>
         <Link
           href="/contact-us"
-          className="font-sans font-black text-base tracking-[0.15em] uppercase text-slate-900 hover:text-blue-500 transition-colors duration-200"
+          className="font-sans font-black text-base tracking-[0.15em] uppercase text-ink-900 hover:text-brand-500 transition-colors duration-200"
         >
           CONTACT
         </Link>
@@ -193,7 +193,7 @@ export default function Navbar() {
           {/* Search Trigger */}
           <button
             onClick={handleToggleSearch}
-            className="p-2 text-slate-900 hover:text-blue-500 transition-colors duration-200"
+            className="p-2 text-ink-900 hover:text-brand-500 transition-colors duration-200"
             aria-label="Toggle search"
           >
             <Search size={22} strokeWidth={2} />
@@ -201,12 +201,12 @@ export default function Navbar() {
 
           <Link
             href="/cart"
-            className="relative p-2 flex items-center justify-center text-slate-900 hover:text-blue-500 transition-colors duration-200"
+            className="relative p-2 flex items-center justify-center text-ink-900 hover:text-brand-500 transition-colors duration-200"
             aria-label="Cart"
           >
             <ShoppingBag size={22} strokeWidth={2} />
             {cartCount > 0 && (
-              <span className="absolute top-0 right-0 w-4 h-4 bg-blue-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center border border-white">
+              <span className="absolute top-0 right-0 w-4 h-4 bg-brand-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center border border-cream">
                 {cartCount}
               </span>
             )}
@@ -229,7 +229,7 @@ export default function Navbar() {
                 {/* Search Trigger */}
                 <button
                   onClick={handleToggleSearch}
-                  className="flex items-center text-slate-900 hover:text-blue-500 transition-colors duration-200 group"
+                  className="flex items-center text-ink-900 hover:text-brand-500 transition-colors duration-200 group"
                   aria-label="Open search"
                 >
                   <Search size={24} strokeWidth={2} className="w-6 h-6" />
@@ -238,12 +238,12 @@ export default function Navbar() {
                 {/* Cart Icon */}
                 <Link
                   href="/cart"
-                  className="relative w-10 h-10 flex items-center justify-center text-slate-900 hover:text-blue-500 transition-colors duration-200"
+                  className="relative w-10 h-10 flex items-center justify-center text-ink-900 hover:text-brand-500 transition-colors duration-200"
                   aria-label="Cart"
                 >
                   <ShoppingBag size={24} strokeWidth={2} className="w-6 h-6" />
                   {cartCount > 0 && (
-                    <span className="absolute top-1 right-1 w-5 h-5 bg-blue-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center border border-white">
+                    <span className="absolute top-1 right-1 w-5 h-5 bg-brand-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center border border-cream">
                       {cartCount}
                     </span>
                   )}
@@ -252,7 +252,7 @@ export default function Navbar() {
                 {/* Account Icon */}
                 <Link
                   href="/profile"
-                  className="w-10 h-10 flex items-center justify-center text-slate-900 hover:text-blue-500 transition-colors duration-200"
+                  className="w-10 h-10 flex items-center justify-center text-ink-900 hover:text-brand-500 transition-colors duration-200"
                   aria-label="Account"
                 >
                   <User size={24} strokeWidth={2} className="w-6 h-6" />
@@ -262,7 +262,7 @@ export default function Navbar() {
                 {isLoggedIn && (
                   <button
                     onClick={handleLogout}
-                    className="w-10 h-10 flex items-center justify-center text-slate-900 hover:text-red-500 transition-colors duration-200"
+                    className="w-10 h-10 flex items-center justify-center text-ink-900 hover:text-red-500 transition-colors duration-200"
                     aria-label="Log out"
                   >
                     <LogOut size={20} strokeWidth={2} className="w-5 h-5" />
@@ -292,11 +292,11 @@ export default function Navbar() {
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       placeholder="Search products..."
-                      className="w-full bg-white border border-blue-500 rounded-full pl-5 pr-12 py-2.5 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-4 focus:ring-blue-500/10 transition-all duration-300 text-[15px]"
+                      className="w-full bg-cream border border-brand-500 rounded-full pl-5 pr-12 py-2.5 text-ink-900 placeholder:text-ink-400 focus:outline-none focus:ring-4 focus:ring-brand-500/10 transition-all duration-300 text-[15px]"
                     />
                     <button
                       type="submit"
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-blue-500 transition-colors duration-200"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-ink-400 hover:text-brand-500 transition-colors duration-200"
                       aria-label="Submit search"
                     >
                       <Search size={20} strokeWidth={2} />
@@ -305,30 +305,30 @@ export default function Navbar() {
 
                   {/* Desktop Live Results Dropdown */}
                   {searchQuery.trim().length > 0 && (
-                    <div className="absolute top-full left-0 right-0 mt-3 bg-white border border-slate-100 rounded-2xl shadow-xl overflow-hidden z-50">
+                    <div className="absolute top-full left-0 right-0 mt-3 bg-cream border border-ink-100 rounded-2xl shadow-xl overflow-hidden z-50">
                       {liveResults.length > 0 ? (
                         <>
                           <ul>
                             {liveResults.map(p => {
                               const imgUrl = getImageUrl(p.images?.[0]);
                               return (
-                                <li key={p._id} className="border-b border-slate-50 last:border-0">
+                                <li key={p._id} className="border-b border-ink-50 last:border-0">
                                   <button
                                     onClick={() => handleResultClick(p._id)}
-                                    className="w-full flex items-center gap-4 px-4 py-3 hover:bg-slate-50 transition-colors text-left"
+                                    className="w-full flex items-center gap-4 px-4 py-3 hover:bg-ink-50 transition-colors text-left"
                                   >
-                                    <div className="w-10 h-10 bg-slate-100 rounded-lg overflow-hidden shrink-0 flex items-center justify-center">
+                                    <div className="w-10 h-10 bg-ink-100 rounded-lg overflow-hidden shrink-0 flex items-center justify-center">
                                       {imgUrl ? (
                                         <img src={imgUrl} alt={p.name} className="w-full h-full object-cover" />
                                       ) : (
-                                        <ShoppingBag size={16} className="text-slate-400" />
+                                        <ShoppingBag size={16} className="text-ink-400" />
                                       )}
                                     </div>
                                     <div className="flex-1 min-w-0">
-                                      <p className="font-bold text-sm text-slate-900 truncate">{p.name}</p>
-                                      <p className="text-xs text-slate-500 truncate">{p.category}</p>
+                                      <p className="font-bold text-sm text-ink-900 truncate">{p.name}</p>
+                                      <p className="text-xs text-ink-500 truncate">{p.category}</p>
                                     </div>
-                                    <span className="text-xs font-bold text-blue-500 shrink-0">₹{p.variants?.[0]?.price}</span>
+                                    <span className="text-xs font-bold text-brand-500 shrink-0">₹{p.variants?.[0]?.price}</span>
                                   </button>
                                 </li>
                               );
@@ -336,13 +336,13 @@ export default function Navbar() {
                           </ul>
                           <button
                             onClick={handleSearch}
-                            className="w-full text-center py-3 bg-slate-50 font-bold text-[11px] uppercase tracking-widest text-blue-600 hover:text-blue-700 hover:bg-blue-50 transition-colors border-t border-slate-100"
+                            className="w-full text-center py-3 bg-ink-50 font-bold text-[11px] uppercase tracking-widest text-brand-600 hover:text-brand-700 hover:bg-brand-50 transition-colors border-t border-ink-100"
                           >
                             View all results for &quot;{searchQuery}&quot;
                           </button>
                         </>
                       ) : (
-                        <div className="px-4 py-5 text-center text-sm text-slate-400 font-medium">
+                        <div className="px-4 py-5 text-center text-sm text-ink-400 font-medium">
                           No products found for &quot;{searchQuery}&quot;
                         </div>
                       )}
@@ -356,7 +356,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.1 }}
                   onClick={() => setIsSearchOpen(false)}
-                  className="w-8 h-8 flex items-center justify-center text-slate-900 hover:text-blue-500 transition-colors duration-200"
+                  className="w-8 h-8 flex items-center justify-center text-ink-900 hover:text-brand-500 transition-colors duration-200"
                   aria-label="Close search"
                 >
                   <X size={24} strokeWidth={2} />
@@ -372,12 +372,12 @@ export default function Navbar() {
                 >
                   <Link
                     href="/cart"
-                    className="relative w-10 h-10 flex items-center justify-center text-slate-900 hover:text-blue-500 transition-colors duration-200"
+                    className="relative w-10 h-10 flex items-center justify-center text-ink-900 hover:text-brand-500 transition-colors duration-200"
                     aria-label="Cart"
                   >
                     <ShoppingBag size={24} strokeWidth={2} className="w-6 h-6" />
                     {cartCount > 0 && (
-                      <span className="absolute top-1 right-1 w-5 h-5 bg-blue-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center border border-white">
+                      <span className="absolute top-1 right-1 w-5 h-5 bg-brand-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center border border-cream">
                         {cartCount}
                       </span>
                     )}
@@ -392,7 +392,7 @@ export default function Navbar() {
                 >
                   <Link
                     href="/profile"
-                    className="w-10 h-10 flex items-center justify-center text-slate-900 hover:text-blue-500 transition-colors duration-200"
+                    className="w-10 h-10 flex items-center justify-center text-ink-900 hover:text-brand-500 transition-colors duration-200"
                     aria-label="Account"
                   >
                     <User size={24} strokeWidth={2} className="w-6 h-6" />
@@ -411,7 +411,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-24 left-0 right-0 bg-white border-b border-slate-200 px-6 py-4 md:hidden shadow-lg z-40"
+            className="absolute top-24 left-0 right-0 bg-cream border-b border-ink-200 px-6 py-4 md:hidden shadow-lg z-40"
           >
             <form onSubmit={handleSearch} className="flex items-center gap-3">
               <div className="relative flex-1">
@@ -421,11 +421,11 @@ export default function Navbar() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search products..."
-                  className="w-full bg-slate-50 border-2 border-blue-500 rounded-full pl-5 pr-12 py-2.5 text-slate-900 focus:outline-none"
+                  className="w-full bg-ink-50 border-2 border-brand-500 rounded-full pl-5 pr-12 py-2.5 text-ink-900 focus:outline-none"
                 />
                 <button
                   type="submit"
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-blue-500 transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-ink-400 hover:text-brand-500 transition-colors"
                   aria-label="Submit search"
                 >
                   <Search size={20} strokeWidth={2} />
@@ -434,7 +434,7 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => setIsSearchOpen(false)}
-                className="text-slate-500 p-2"
+                className="text-ink-500 p-2"
               >
                 <X size={24} />
               </button>
@@ -442,30 +442,30 @@ export default function Navbar() {
 
             {/* Mobile Live Results Dropdown */}
             {searchQuery.trim().length > 0 && (
-              <div className="mt-4 bg-white border border-slate-100 rounded-xl shadow-sm overflow-hidden">
+              <div className="mt-4 bg-cream border border-ink-100 rounded-xl shadow-sm overflow-hidden">
                 {liveResults.length > 0 ? (
                   <>
                     <ul>
                       {liveResults.map(p => {
                         const imgUrl = getImageUrl(p.images?.[0]);
                         return (
-                          <li key={p._id} className="border-b border-slate-50 last:border-0">
+                          <li key={p._id} className="border-b border-ink-50 last:border-0">
                             <button
                               onClick={() => handleResultClick(p._id)}
-                              className="w-full flex items-center gap-3 px-4 py-3 hover:bg-slate-50 transition-colors text-left"
+                              className="w-full flex items-center gap-3 px-4 py-3 hover:bg-ink-50 transition-colors text-left"
                             >
-                              <div className="w-10 h-10 bg-slate-100 rounded-lg overflow-hidden shrink-0 flex items-center justify-center">
+                              <div className="w-10 h-10 bg-ink-100 rounded-lg overflow-hidden shrink-0 flex items-center justify-center">
                                 {imgUrl ? (
                                   <img src={imgUrl} alt={p.name} className="w-full h-full object-cover" />
                                 ) : (
-                                  <ShoppingBag size={16} className="text-slate-400" />
+                                  <ShoppingBag size={16} className="text-ink-400" />
                                 )}
                               </div>
                               <div className="flex-1 min-w-0">
-                                <p className="font-bold text-sm text-slate-900 truncate">{p.name}</p>
-                                <p className="text-xs text-slate-500">{p.category}</p>
+                                <p className="font-bold text-sm text-ink-900 truncate">{p.name}</p>
+                                <p className="text-xs text-ink-500">{p.category}</p>
                               </div>
-                              <span className="text-xs font-bold text-blue-500 shrink-0">₹{p.variants?.[0]?.price}</span>
+                              <span className="text-xs font-bold text-brand-500 shrink-0">₹{p.variants?.[0]?.price}</span>
                             </button>
                           </li>
                         );
@@ -473,13 +473,13 @@ export default function Navbar() {
                     </ul>
                     <button
                       onClick={handleSearch}
-                      className="w-full text-center py-3 bg-slate-50 font-bold text-xs text-blue-600 hover:text-blue-700 transition-colors border-t border-slate-100"
+                      className="w-full text-center py-3 bg-ink-50 font-bold text-xs text-brand-600 hover:text-brand-700 transition-colors border-t border-ink-100"
                     >
                       View all results for &quot;{searchQuery}&quot;
                     </button>
                   </>
                 ) : (
-                  <div className="px-4 py-4 text-center text-sm text-slate-400 font-medium">
+                  <div className="px-4 py-4 text-center text-sm text-ink-400 font-medium">
                     No products found
                   </div>
                 )}
@@ -496,20 +496,20 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="absolute top-24 left-0 right-0 bg-white border-b border-slate-200 shadow-lg z-30 md:hidden overflow-hidden"
+            className="absolute top-24 left-0 right-0 bg-cream border-b border-ink-200 shadow-lg z-30 md:hidden overflow-hidden"
           >
             <nav className="flex flex-col px-6 py-4 gap-2">
               <Link
                 href="/products"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="font-sans font-bold text-base tracking-[0.15em] uppercase text-slate-900 hover:text-blue-500 transition-colors py-3 border-b border-slate-100"
+                className="font-sans font-bold text-base tracking-[0.15em] uppercase text-ink-900 hover:text-brand-500 transition-colors py-3 border-b border-ink-100"
               >
                 SHOP
               </Link>
               <Link
                 href="/contact-us"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="font-sans font-bold text-base tracking-[0.15em] uppercase text-slate-900 hover:text-blue-500 transition-colors py-3"
+                className="font-sans font-bold text-base tracking-[0.15em] uppercase text-ink-900 hover:text-brand-500 transition-colors py-3"
               >
                 CONTACT
               </Link>
