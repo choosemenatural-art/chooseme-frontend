@@ -19,7 +19,6 @@ interface Product {
   currentPrice: number;
   originalPrice: number;
   currency: string;
-  dealBadge: string;
   benefit: string;
   category: string;
 }
@@ -124,7 +123,6 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
             <span className="font-bold text-lg md:text-xl text-ink-900">{product.currency}{product.currentPrice}</span>
             <span className="text-xs md:text-sm line-through text-ink-400">{product.currency}{product.originalPrice}</span>
           </div>
-          <p className="font-bold text-[10px] uppercase tracking-wider text-brand-600 mb-1">{product.dealBadge}</p>
           <p className="text-xs text-ink-500 line-clamp-1 mb-2">{product.benefit}</p>
         </div>
       </Link>
@@ -417,7 +415,6 @@ function ProductsContent() {
               currentPrice: p.variants?.[0]?.price || 0,
               originalPrice: p.variants?.[0]?.oldPrice || p.variants?.[0]?.price || 0,
               currency: "₹",
-              dealBadge: p.offerText || "",
               benefit: p.keyFeatures || "",
               category: p.category ? p.category.toLowerCase().replace(/\s+/g, '-') : "all",
             }));

@@ -23,7 +23,6 @@ interface Product {
   currentPrice: number;
   originalPrice: number;
   currency: string;
-  dealBadge: string;
   category: string;
   benefits: string[];
   ingredients: string;
@@ -109,7 +108,6 @@ export default function ProductDetailPage() {
             currentPrice: p.variants?.[0]?.price || 0,
             originalPrice: p.variants?.[0]?.oldPrice || p.variants?.[0]?.price || 0,
             currency: "₹",
-            dealBadge: p.offerText || "",
             category: p.category || "all",
             benefits: p.keyFeatures ? p.keyFeatures.split(/,|\n/).map((s: string) => s.trim()).filter(Boolean) : ["Premium Quality"],
             ingredients: p.description || "Refer to packaging",
@@ -310,9 +308,13 @@ export default function ProductDetailPage() {
                 {product.currency}{product.originalPrice}
               </span>
             </div>
-            <p className="font-bold text-xs uppercase tracking-wider text-brand-600 mb-6">
-              {product.dealBadge} — You save {product.currency}{product.originalPrice - product.currentPrice}
-            </p>
+            {product.originalPrice > product.currentPrice ? (
+              <p className="font-bold text-xs uppercase tracking-wider text-brand-600 mb-6">
+                You save {product.currency}{product.originalPrice - product.currentPrice}
+              </p>
+            ) : (
+              <div className="mb-6" />
+            )}
 
             {/* Size Selector */}
             {product.sizes.length > 1 && (

@@ -5,29 +5,23 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
-const DEFAULT_CATEGORIES = [
-  {
-    id: 'skin-care',
-    label: 'Skin Care',
-    image: '/images/skin-care.jpg',
-    alt: 'Skin Care category featuring gentle cleansing soaps'
-  },
-  {
-    id: 'lip-care',
-    label: 'Lip Care',
-    image: '/images/lip-care.jpg',
-    alt: 'Lip Care category featuring nourishing natural care'
-  },
-  {
-    id: 'body-care',
-    label: 'Body Care',
-    image: '/images/body-care.jpg',
-    alt: 'Body Care category featuring luxurious bath soaps'
-  }
-];
+interface ICategoryCard {
+  id: string;
+  label: string;
+  image: string;
+  alt: string;
+}
+
+// No static images: plain white placeholder cards until real categories load.
+const PLACEHOLDER_CATEGORIES: ICategoryCard[] = [0, 1, 2].map((i) => ({
+  id: `placeholder-${i}`,
+  label: '',
+  image: '',
+  alt: '',
+}));
 
 export default function CategorySection() {
-  const [categories, setCategories] = useState(DEFAULT_CATEGORIES);
+  const [categories, setCategories] = useState<ICategoryCard[]>(PLACEHOLDER_CATEGORIES);
   const [isVisible, setIsVisible] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -45,10 +39,10 @@ export default function CategorySection() {
           const activeCats = res.data.data.filter((c: any) => c.status === 'ACTIVE').slice(0, 3);
 
           if (activeCats.length > 0) {
-            const formatted = activeCats.map((c: any, index: number) => ({
+            const formatted = activeCats.map((c: any) => ({
               id: c.name.toLowerCase().replace(/\s+/g, '-'),
               label: c.name,
-              image: c.image || DEFAULT_CATEGORIES[index % 3].image,
+              image: c.image || '',
               alt: `${c.name} category`
             }));
             setCategories(formatted);
@@ -149,7 +143,13 @@ export default function CategorySection() {
         ref={scrollRef}
         className="w-full flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-0 md:gap-1 px-0 md:px-6 pb-4 border-b border-ink-100 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
-        {categories.map((category, index) => (
+        {categories.map((category, index) => category.id.startsWith('placeholder-') ? (
+          <div key={category.id} className="w-full flex-shrink-0 snap-center flex flex-col md:w-auto md:flex-shrink md:snap-align-none px-6 md:px-0 py-4 md:py-0">
+            <div className="md:hidden rounded-[2.5rem] aspect-[4/5] bg-white" />
+            <div className="hidden md:block aspect-square lg:aspect-[4/3] bg-white" />
+            <div className="hidden md:block py-6 md:py-8 h-[72px] md:h-[88px]" />
+          </div>
+        ) : (
           <div key={category.id} className="w-full flex-shrink-0 snap-center flex flex-col md:w-auto md:flex-shrink md:snap-align-none px-6 md:px-0 py-4 md:py-0">
             {/* Mobile Card Layout (New Style) */}
             <Link
@@ -159,14 +159,18 @@ export default function CategorySection() {
                 }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <Image
-                src={category.image}
-                alt={category.alt}
-                fill
-                priority={index === 0}
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-105"
-              />
+              {category.image ? (
+                <Image
+                  src={category.image}
+                  alt={category.alt}
+                  fill
+                  priority={index === 0}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-105"
+                />
+              ) : (
+                <div className="absolute inset-0 bg-white" />
+              )}
 
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500 motion-reduce:transition-none" />
@@ -191,14 +195,18 @@ export default function CategorySection() {
                 }`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <Image
-                src={category.image}
-                alt={category.alt}
-                fill
-                priority={index === 0}
-                sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-110"
-              />
+              {category.image ? (
+                <Image
+                  src={category.image}
+                  alt={category.alt}
+                  fill
+                  priority={index === 0}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-[2000ms] ease-out group-hover:scale-110"
+                />
+              ) : (
+                <div className="absolute inset-0 bg-white" />
+              )}
               <div className="absolute inset-0 bg-black/10 group-hover:bg-brand-900/30 transition-colors duration-500 motion-reduce:transition-none" />
 
               <div className="absolute inset-0 flex items-center justify-center">

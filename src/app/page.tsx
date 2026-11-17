@@ -3,7 +3,6 @@
 import HeroSection from "../components/landingPage/HeroSection";
 import CategorySection from "../components/landingPage/CategorySection";
 import ProductSection from "../components/landingPage/ProductSection";
-import TestimonialsSection from "../components/landingPage/TestimonialsSection";
 
 export default function Home() {
   return (
@@ -11,8 +10,6 @@ export default function Home() {
       <HeroSection />
       <CategorySection />
       <ProductSection />
-      <ProductSection title="POPULAR PRODUCTS" mode="popular" />
-      <TestimonialsSection />
     </main>
   );
 }

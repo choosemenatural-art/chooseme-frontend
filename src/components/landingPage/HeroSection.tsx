@@ -25,19 +25,9 @@ interface ISlide {
   subheadline: string;
 }
 
-const DEFAULT_SLIDES: ISlide[] = [
-  {
-    id: "default-1",
-    image: "/hero-bg.png",
-    mobileImage: "/hero-bg.png",
-    alt: "Premium handcrafted soap with rich lather",
-    headline: "PURE LATHER",
-    subheadline: "Gentle cleansing, rich foam, a fresh feeling that lasts.",
-  },
-];
-
 export default function HeroSection() {
-  const [allSlides, setAllSlides] = useState<ISlide[]>(DEFAULT_SLIDES);
+  // No static fallback: the hero stays plain white until real banners load.
+  const [allSlides, setAllSlides] = useState<ISlide[]>([]);
   const [isMobile, setIsMobile] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -78,9 +68,9 @@ export default function HeroSection() {
               mobileImage: b.mobileImage
                 ? (b.mobileImage.startsWith("/") ? `${baseUrl}${b.mobileImage}` : b.mobileImage)
                 : null,
-              alt: b.title,
-              headline: b.title,
-              subheadline: b.description,
+              alt: b.title || "Banner",
+              headline: b.title || "",
+              subheadline: b.description || "",
             }));
             setAllSlides(mapped);
           }
@@ -102,12 +92,12 @@ export default function HeroSection() {
   }, []);
 
   // Filter slides dynamically based on screen size
-  const displaySlides = allSlides.filter(slide => {
-    if (slide.id.startsWith("default-")) return true;
-    return isMobile ? !!slide.mobileImage : true;
-  });
+  const displaySlides = allSlides.filter(slide =>
+    isMobile ? !!slide.mobileImage : true
+  );
 
-  const finalSlides = displaySlides.length > 0 ? displaySlides : DEFAULT_SLIDES;
+  // On mobile, if no banner has a mobile image, fall back to the desktop banners.
+  const finalSlides = displaySlides.length > 0 ? displaySlides : allSlides;
 
   useEffect(() => {
     if (currentSlide >= finalSlides.length) {
@@ -160,7 +150,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative w-full h-[80vh] md:h-screen overflow-hidden bg-black touch-pan-y"
+      className="relative w-full h-[80vh] md:h-screen overflow-hidden bg-white touch-pan-y"
       aria-label="Hero section"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
@@ -240,15 +230,19 @@ export default function HeroSection() {
               {/* Content specific to this slide */}
               <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-4 pointer-events-none">
 
-                {/* Headline */}
-                <h1 className="mb-6 text-white drop-shadow-sm font-sans font-normal text-4xl md:text-6xl lg:text-8xl tracking-[0.2em] md:tracking-[0.2em] uppercase pointer-events-auto">
-                  {slide.headline}
-                </h1>
+                {/* Headline (optional) */}
+                {slide.headline && (
+                  <h1 className="mb-6 text-white drop-shadow-sm font-sans font-normal text-4xl md:text-6xl lg:text-8xl tracking-[0.2em] md:tracking-[0.2em] uppercase pointer-events-auto">
+                    {slide.headline}
+                  </h1>
+                )}
 
-                {/* Subheadline */}
-                <p className="mb-10 text-white/90 max-w-xl font-sans font-normal text-base md:text-lg lg:text-xl tracking-wide pointer-events-auto">
-                  {slide.subheadline}
-                </p>
+                {/* Subheadline (optional) */}
+                {slide.subheadline && (
+                  <p className="mb-10 text-white/90 max-w-xl font-sans font-normal text-base md:text-lg lg:text-xl tracking-wide pointer-events-auto">
+                    {slide.subheadline}
+                  </p>
+                )}
               </div>
             </motion.div>
           ) : null

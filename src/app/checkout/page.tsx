@@ -23,10 +23,6 @@ export default function CheckoutPage() {
   });
   const [addressErrors, setAddressErrors] = useState<Record<string, string>>({});
 
-  const [promoCode, setPromoCode] = useState("");
-  const [discountAmount, setDiscountAmount] = useState(0);
-  const [promoMessage, setPromoMessage] = useState<{ text: string; type: "success" | "error" } | null>(null);
-  const [isApplyingPromo, setIsApplyingPromo] = useState(false);
 
   const [isSavingAddress, setIsSavingAddress] = useState(false);
   const [isVerifyingPayment, setIsVerifyingPayment] = useState(false);
@@ -133,35 +129,8 @@ export default function CheckoutPage() {
 
   const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const shipping = 0;
-  const total = Math.max(0, subtotal - discountAmount);
+  const total = subtotal + shipping;
 
-  const handleApplyPromo = async () => {
-    if (!promoCode.trim()) {
-      setPromoMessage({ text: "Please enter a promo code", type: "error" });
-      return;
-    }
-    setIsApplyingPromo(true);
-    setPromoMessage(null);
-    try {
-      const baseUrl = process.env.NEXT_PUBLIC_API_URL ? process.env.NEXT_PUBLIC_API_URL.replace(/\/api\/?$/, "") : 'http://localhost:5000';
-      const API_URL = `${baseUrl}/api`;
-      const response = await axios.post(`${API_URL}/v1/coupons/validate`, { code: promoCode, cartTotal: subtotal });
-
-      if (response.data.success) {
-        setDiscountAmount(response.data.data.discountAmount);
-        setPromoMessage({ text: response.data.message, type: "success" });
-      } else {
-        setDiscountAmount(0);
-        setPromoMessage({ text: response.data.message || "Invalid promo code", type: "error" });
-      }
-    } catch (error: any) {
-      console.error(error);
-      setDiscountAmount(0);
-      setPromoMessage({ text: error.response?.data?.message || "Failed to apply promo code.", type: "error" });
-    } finally {
-      setIsApplyingPromo(false);
-    }
-  };
 
   const loadRazorpayScript = () => {
     return new Promise((resolve) => {
@@ -237,7 +206,6 @@ export default function CheckoutPage() {
           items: orderItems,
           shippingAddress: orderShippingAddress,
           subtotal,
-          discount: discountAmount,
           shippingFee: shipping,
           total,
         }, {
@@ -279,7 +247,6 @@ export default function CheckoutPage() {
               items: orderItems,
               shippingAddress: orderShippingAddress,
               subtotal,
-              discount: discountAmount,
               shippingFee: shipping,
               total,
             }, {
@@ -397,46 +364,6 @@ export default function CheckoutPage() {
               </div>
             </div>
 
-            <div className="h-px bg-ink-200 w-full ml-0 sm:ml-12" />
-
-            {/* Step 2: PROMOTION CODE */}
-            <div className="flex flex-col gap-6">
-              <div className="flex items-center gap-4">
-                <div className="w-8 h-8 rounded-full bg-brand-900 text-white flex items-center justify-center text-sm font-bold flex-shrink-0">
-                  2
-                </div>
-                <h2 className="font-sans font-bold text-xl text-brand-900 uppercase tracking-wider">
-                  Promotion Code
-                </h2>
-              </div>
-
-              <div className="flex flex-col gap-2 ml-0 sm:ml-12">
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <input
-                    type="text"
-                    value={promoCode}
-                    onChange={(e) => setPromoCode(e.target.value)}
-                    placeholder="Enter gift card or discount code"
-                    className="flex-1 border border-ink-200 rounded-xl px-5 py-4 text-base focus:outline-none focus:ring-2 focus:ring-brand-900 bg-cream placeholder:text-ink-400"
-                  />
-                  <button
-                    onClick={handleApplyPromo}
-                    disabled={isApplyingPromo}
-                    className="bg-brand-950 text-white font-bold text-sm px-10 py-4 rounded-xl hover:bg-brand-900 transition-colors shrink-0 disabled:opacity-50"
-                  >
-                    {isApplyingPromo ? "Applying..." : "Apply"}
-                  </button>
-                </div>
-                {promoMessage && (
-                  <p className={`text-sm mt-1 font-medium ${promoMessage.type === 'error' ? 'text-red-500' : 'text-brand-600'}`}>
-                    {promoMessage.text}
-                  </p>
-                )}
-              </div>
-            </div>
-
-            {/* <div className="h-px bg-ink-200 w-full ml-0 sm:ml-2" /> */}
-
 
 
           </div>
@@ -489,12 +416,6 @@ export default function CheckoutPage() {
                 <span>Subtotal</span>
                 <span className="text-ink-900">₹{subtotal.toFixed(2)}</span>
               </div>
-              {discountAmount > 0 && (
-                <div className="flex justify-between items-center text-brand-600 font-sans text-sm">
-                  <span>Discount</span>
-                  <span>-₹{discountAmount.toFixed(2)}</span>
-                </div>
-              )}
               <div className="flex justify-between items-center text-ink-500 font-sans text-sm">
                 <span>Shipping</span>
                 <span>

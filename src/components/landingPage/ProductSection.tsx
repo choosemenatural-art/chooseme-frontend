@@ -17,7 +17,6 @@ interface Product {
   currentPrice: number;
   originalPrice: number;
   currency: string;
-  dealBadge: string;
   benefit: string;
 }
 
@@ -110,10 +109,6 @@ function ProductCard({ product, isVisible, index }: { product: Product; isVisibl
             </span>
           </div>
 
-          <div className="text-brand-600 font-sans font-bold text-[10px] sm:text-xs uppercase tracking-wider text-center mb-1">
-            {product.dealBadge}
-          </div>
-
           <p className="font-sans font-normal text-xs text-ink-500 text-center line-clamp-1">
             {product.benefit}
           </p>
@@ -135,13 +130,7 @@ function ProductCard({ product, isVisible, index }: { product: Product; isVisibl
   );
 }
 
-interface ProductSectionProps {
-  title?: string;
-  mode?: "landing" | "popular";
-  limit?: number;
-}
-
-export default function ProductSection({ title = "OUR PRODUCTS", mode = "landing", limit = 5 }: ProductSectionProps = {}) {
+export default function ProductSection() {
   const [isVisible, setIsVisible] = useState(false);
   const [products, setProducts] = useState<Product[]>(DEFAULT_PRODUCTS);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -154,16 +143,7 @@ export default function ProductSection({ title = "OUR PRODUCTS", mode = "landing
           : 'http://localhost:5000';
         const res = await axios.get(`${baseUrl}/api/v1/products`);
         if (res.data.success && res.data.data) {
-          const landingProds =
-            mode === "popular"
-              ? [...res.data.data]
-                  .sort(
-                    (a: any, b: any) =>
-                      (b.reviewsCount || 0) - (a.reviewsCount || 0) ||
-                      (b.starRating || 0) - (a.starRating || 0)
-                  )
-                  .slice(0, limit)
-              : res.data.data.filter((p: any) => p.showOnLandingPage === true);
+          const landingProds = res.data.data.filter((p: any) => p.showOnLandingPage === true);
 
           const mappedProds = landingProds.map((p: any) => ({
             id: p._id,
@@ -174,7 +154,6 @@ export default function ProductSection({ title = "OUR PRODUCTS", mode = "landing
             currentPrice: p.variants?.[0]?.price || 0,
             originalPrice: p.variants?.[0]?.oldPrice || p.variants?.[0]?.price || 0,
             currency: "₹",
-            dealBadge: p.offerText || "",
             benefit: p.keyFeatures || "",
           }));
           setProducts(mappedProds);
@@ -184,7 +163,7 @@ export default function ProductSection({ title = "OUR PRODUCTS", mode = "landing
       }
     };
     fetchLandingProducts();
-  }, [mode, limit]);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -209,10 +188,10 @@ export default function ProductSection({ title = "OUR PRODUCTS", mode = "landing
       {/* Section Header */}
       <div className="text-center px-6">
         <h2
-          className={`font-sans font-black text-5xl md:text-6xl lg:text-7xl tracking-[0.15em] uppercase text-ink-900 mb-4 transition-all duration-600 ease-out motion-reduce:transition-none motion-reduce:transform-none ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          className={`font-sans font-black text-3xl md:text-4xl lg:text-5xl tracking-[0.15em] uppercase text-ink-900 mb-4 transition-all duration-600 ease-out motion-reduce:transition-none motion-reduce:transform-none ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
         >
-          {title}
+          OUR PRODUCTS
         </h2>
         <div
           className={`w-20 h-1 bg-ink-900 mx-auto mt-4 mb-8 md:mb-12 transition-transform duration-500 delay-200 origin-center motion-reduce:transition-none motion-reduce:transform-none ${isVisible ? "scale-x-100" : "scale-x-0"
